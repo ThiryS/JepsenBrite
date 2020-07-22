@@ -13,7 +13,7 @@
                   @endauth
                   @foreach ($events as $event)
                     <p>
-                      <a href="{{ route('events.show', $event->id) }}">This is event {{ $event->name }}</a>
+                      This is event <a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a>
                        user: {{ $event->user->name}}
                     </p>
                   @endforeach
