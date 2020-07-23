@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Event;
+use App\Comment;
 
 class EventController extends Controller
 {
@@ -60,7 +61,7 @@ class EventController extends Controller
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new event instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\Event

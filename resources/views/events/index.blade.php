@@ -14,7 +14,7 @@
                   @foreach ($events as $event)
                     <p>
                       This is event <a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a>
-                       user: {{ $event->user->name}}
+                       user: {{ $event->user->name}} Quand ? {{ $event->date }}
                     </p>
                   @endforeach
                 </div>

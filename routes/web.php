@@ -28,3 +28,5 @@ Route::get('/events', 'EventController@index')->name('events.index');
 Route::get('/events/new', 'EventController@new')->name('events.new')->middleware('verified');
 Route::get('/events/{id}', 'EventController@find')->name('events.show');
 Route::post('/events', 'EventController@create')->name('events.create')->middleware('verified');
+// Route::get('/events/{id}', 'CommentsController@find')->name('comments.show');
+Route::post('/events/{id}/comments', 'CommentsController@create')->name('comments.create')->middleware('verified');

@@ -24,6 +24,10 @@ class Event extends Model
     {
         return $this->belongsTo('App\User');
     }
+    public function comment()
+    {
+        return $this->hasMany('App\Comment');
+    }
 
     public function create($event)
     {
