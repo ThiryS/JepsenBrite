@@ -53,6 +53,26 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Catégorie') }}</label>
+
+                            <div class="col-md-6">
+                              <select id="category" class="@error('category') is-invalid @enderror" name="category">
+                                <option value="Concert">Concert</option>
+                                <option value="Exibition">Exibition</option>
+                                <option value="Conférence">Conférence</option>
+                                <option value="Salon">Salon</option>
+                                <option value="Spectacle">Spectacle</option>
+                              </select>
+
+                                @error('category')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">

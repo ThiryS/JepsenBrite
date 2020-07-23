@@ -22,6 +22,7 @@ class EventController extends Controller
              'name' => ['required', 'string', 'max:255'],
              'description' => ['required', 'string', 'max:2058'],
              'date' => ['required', 'date'],
+             'category' => ['required', 'string'],
          ]);
      }
 
@@ -72,6 +73,7 @@ class EventController extends Controller
             'name' => $data['name'],
             'description' => $data['description'],
             'date' => $data['date'],
+            'category' =>$data['category'],
         ]);
         Auth::user()->events()->save($event);
         return $event;
@@ -90,6 +92,7 @@ class EventController extends Controller
         $event->name =  $request->get('name');
         $event->description = $request->get('description');
         $event->date = $request->get('date');
+        $event->category = $request->get('category');
         $event->save();
 
 

@@ -16,6 +16,7 @@
 
                 <div class="card-body">
                   {{ $event->description }}
+                  {{ $event->category }}
                 </div>
             </div>
             @foreach ($event->comments as $comment)
