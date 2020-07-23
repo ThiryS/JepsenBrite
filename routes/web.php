@@ -23,10 +23,10 @@ Auth::routes(['verify' => true]);
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 Route::get('/events', 'EventController@index')->name('events.index');
-// Route::put('/events/{id}', 'EventController@edit');
-// Route::delete('/events/{id}', 'EventController@delete');
+Route::get('/events/{id}/edit', 'EventController@edit')->name('events.edit')->middleware('verified');
+Route::put('/events/{id}', 'EventController@update')->name('events.update')->middleware('verified');
+Route::delete('/events/{id}', 'EventController@destroy')->name('events.destroy')->middleware('verified');
 Route::get('/events/new', 'EventController@new')->name('events.new')->middleware('verified');
 Route::get('/events/{id}', 'EventController@find')->name('events.show');
 Route::post('/events', 'EventController@create')->name('events.create')->middleware('verified');
-// Route::get('/events/{id}', 'CommentsController@find')->name('comments.show');
 Route::post('/events/{id}/comments', 'CommentsController@create')->name('comments.create')->middleware('verified');

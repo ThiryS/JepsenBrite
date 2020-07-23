@@ -5,7 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ $event->name }}</div>
+                <div class="card-header">{{ $event->name }} @if ($event->user->id === Auth::user()->id) <a href="{{ route('events.edit', $event->id) }}">Modifier</a>
+                  <form action="{{ route('events.destroy', $event->id)}}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button class="btn btn-danger" type="submit">Supprimer</button>
+                  </form>
+                @endif
+              </div>
 
                 <div class="card-body">
                   {{ $event->description }}
@@ -13,7 +20,7 @@
             </div>
             @foreach ($event->comments as $comment)
             <p>
-              Commentaire: {{$comment->comment}} de: {{ $comment->user->name}} posté: {{$comment->updated_at}} 
+              Commentaire: {{$comment->comment}} de: {{ $comment->user->name}} posté: {{$comment->updated_at}}
             </p>
             @endforeach
             @auth

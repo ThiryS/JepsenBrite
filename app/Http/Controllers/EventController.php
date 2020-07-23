@@ -76,4 +76,31 @@ class EventController extends Controller
         Auth::user()->events()->save($event);
         return $event;
     }
+    public function edit($id)
+    {
+        $event = Event::find($id);
+        return view('events.edit', ['event' => $event]);
+    }
+    public function update(Request $request, $id)
+    {
+
+
+        $this->validator($request->all())->validate();
+        $event = Event::find($id);
+        $event->name =  $request->get('name');
+        $event->description = $request->get('description');
+        $event->date = $request->get('date');
+        $event->save();
+
+
+        return \Redirect::route('events.show', $event->id)->with('success', 'Event modifié!');
+
+    }
+    public function destroy($id)
+    {
+        $event = Event::find($id);
+        $event->delete();
+
+        return \Redirect::route('events.index')->with('success', 'Event supprimé!');
+    }
 }
