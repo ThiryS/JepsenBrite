@@ -11,6 +11,11 @@
                   {{ $event->description }}
                 </div>
             </div>
+            @foreach ($event->comments as $comment)
+            <p>
+              Commentaire: {{$comment->comment}} de: {{ $comment->user->name}} posté: {{$comment->updated_at}} 
+            </p>
+            @endforeach
             @auth
             <form method="POST" action="{{ route('comments.create', $event->id) }}">
                 @csrf

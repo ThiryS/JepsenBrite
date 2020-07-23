@@ -15,6 +15,7 @@ class CommentsController extends Controller
   * Get a validator for an incoming registration request.
   *
   * @param  array  $data
+  * @param  string  $id
   * @return \Illuminate\Contracts\Validation\Validator
   */
    protected function validator(array $data)
@@ -36,24 +37,28 @@ class CommentsController extends Controller
     * @param  array  $data
     * @return \App\Event
     */
-    public function create(Request $request)
+    public function create(Request $request, $id)
     {
+      $event = Event::find($id);
       // validators
       $this->validator($request->all())->validate();
       // create event
-      $comment = $this->createComment($request->all());
+
+      $comment = $this->createComment($request->all(), $event);
       // redirect to
       return \Redirect::route('events.show', $event->id)->with('success', 'Commentaire sauvé!');
     }
-   protected function createComment(array $data)
+   protected function createComment(array $data, $event)
    {
        $comment = new Comment([
            'comment' => $data['comment'],
        ]);
-       $comment = $comment->save();
+       $user=Auth::user();
 
        $comment->user()->associate($user);
        $comment->event()->associate($event);
+       $comment->save();
+
        return $comment;
    }
 }
