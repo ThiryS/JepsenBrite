@@ -37,11 +37,27 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+    /***
+     * protected static function boot()
+     * {
+     *      parent::boot();
+     * 
+     *      static::created(function ($user) {
+     *          $user->profile()->create();
+     *      });
+     * }
+     */
+
     /**
      * Get the events from the user.
      */
     public function events()
     {
-        return $this->hasMany('App\Event');
+        return $this->hasMany('App\Event')->orderBy('created_at', 'DESC');
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(Profile::class);
     }
 }

@@ -28,3 +28,11 @@ Route::get('/events', 'EventController@index')->name('events.index');
 Route::get('/events/new', 'EventController@new')->name('events.new')->middleware('verified');
 Route::get('/events/{id}', 'EventController@find')->name('events.show');
 Route::post('/events', 'EventController@create')->name('events.create')->middleware('verified');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
+Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
