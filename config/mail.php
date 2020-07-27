@@ -72,6 +72,14 @@ return [
         ],
     ],
 
+    'stream' => [
+    'ssl' => [
+        'allow_self_signed' => true,
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+    ],
+],
+
     /*
     |--------------------------------------------------------------------------
     | Global "From" Address
@@ -105,6 +113,12 @@ return [
         'paths' => [
             resource_path('views/vendor/mail'),
         ],
+    ],
+
+    'ssloptions' => [
+    'allow_self_signed' => env('MAIL_SSLOPTIONS_ALLOW_SELF_SIGNED', false),
+    'verify_peer' => env('MAIL_SSLOPTIONS_VERIFY_PEER', true),
+    'verify_peer_name' => env('MAIL_SSLOPTIONS_VERIFY_PEER_NAME', true),
     ],
 
 ];

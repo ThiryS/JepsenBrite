@@ -21,7 +21,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-
+Route::get('/', 'EventController@indexWelcome')->name('events.index.wel');
 Route::get('/events', 'EventController@index')->name('events.index');
 Route::get('/events/{id}/edit', 'EventController@edit')->name('events.edit')->middleware('verified');
 Route::put('/events/{id}', 'EventController@update')->name('events.update')->middleware('verified');

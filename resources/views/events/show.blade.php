@@ -15,9 +15,12 @@
               </div>
 
                 <div class="card-body">
-                  {{ $event->description }}
+                  <p>
+                    @parsedown($event->description)
+                  </p>
                   {{ $event->category }}
                 </div>
+
             </div>
             @foreach ($event->comments as $comment)
             <p>

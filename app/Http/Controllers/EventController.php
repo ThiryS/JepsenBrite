@@ -39,6 +39,14 @@ class EventController extends Controller
         return view('events/index', ['events' => $events]);
     }
 
+    public function indexWelcome()
+    {
+        // Retrieve events from db using eloquent
+        $events = Event::all();
+        // render the view with the events
+        return view('welcome', ['events' => $events]);
+    }
+
     public function find($id)
     {
         $event = Event::find($id);
