@@ -1,123 +1,127 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Jepsen Brite</title>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-        <link rel="icon" href="favicon.ico" />
+    <title>Jepsen Brite</title>
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
 
-            .full-height {
-                height: 100vh;
-            }
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="icon" href="favicon.ico" />
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                    <a href="{{ url('/events') }}">Events</a>
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
                     Jepsen Brite
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
+
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/events') }}">Events</a>
+                        </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            </li>
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                                </div>
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
-
-
             </div>
-        </div>
+        </nav>
+
+        <main class="py-4">
+            @include('flash-messages')
+            @yield('content')
+        </main>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-12">
+                  <img src="unnamed.jpg" alt="bannier">
                     <div class="card">
-                        <div class="card-header">{{ __('Tous des événemets') }}</div>
+                        <div class="card-header">{{ __('Evenements à venir') }}</div>
+
 
                         <div class="card-body">
-                          <table class="table table-bordered">
-                            <tr class="thead-light">
-                              <th scope="col">Nom</th>
-                              <th scope="col">Date</th>
-                              <th scope="col">Categorie</th>
-                              <th scope="col">Createur</th>
-                            </tr>
+                          <div class="row">
+
                             @foreach ($events->sortBy('date') as $event)
-                            @if ($event->date >= now())
-                            <tr>
-                              <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
-                              <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
-                              <td>{{ $event->category }}</td>
-                              <td>{{ $event->user->name}}</td>
-                            </tr>
-                            @endif
-                            @endforeach
-                          </table>
+                              @if ($event->date >= now())
+                              <div class="col-sm-4">
+                                <div class="card" style="width: 18rem; margin-bottom: 1em; margin-top: 1em;">
+                                  @if($event->image === NULL)
+                                  <img class="card-img-top" src="event.jpg" alt="Card image cap">
+                                  @else
+                                  <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
+                                  @endif
+                                  <div class="card-body">
+                                    <h5 class="card-title">{{ $event->name }}</h5>
+                                    <p class="card-text">@parsedown($event->description)</p>
+                                  </div>
+                                  <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">Catégorie: {{ $event->category }}</li>
+                                    <li class="list-group-item">Date: {{ date('d-m-Y', strtotime($event->date)) }}</li>
+                                  </ul>
+                                  <div class="card-body">
+                                    <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
+                                  </div>
+                                </div>
+                              </div>
+                              @endif
+                              @endforeach
+                            </div>
+                          {{ $events->links() }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
 </html>

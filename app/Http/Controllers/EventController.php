@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Pagination\Paginator;
 use App\Event;
 use App\Comment;
 
@@ -42,7 +43,7 @@ class EventController extends Controller
     public function indexWelcome()
     {
         // Retrieve events from db using eloquent
-        $events = Event::all();
+        $events = Event::paginate(21);
         // render the view with the events
         return view('welcome', ['events' => $events]);
     }
