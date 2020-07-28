@@ -55,7 +55,12 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    <div class="d-flex align-irems-center">
+                                        <div class="pr-3">
+                                            <img src="/storage/{{ Auth::user()->profile->image }}" class="rounded-circle w-100" style="max-width: 25px">
+                                        </div>
+                                        {{ Auth::user()->name }} <span class="caret"></span>
+                                    </div>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
