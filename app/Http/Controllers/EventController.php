@@ -21,6 +21,7 @@ class EventController extends Controller
              'name' => ['required', 'string', 'max:255'],
              'description' => ['required', 'string', 'max:2058'],
              'date' => ['required', 'date'],
+             'image' => ['nullable', 'image'],
          ]);
      }
 
