@@ -29,5 +29,15 @@ class Event extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public static function boot() {
+        parent::boot();
+        self::deleting(function($event) { // before delete() method call this
+             $event->comments()->each(function($comment) {
+                $comment->delete(); // <-- direct deletion
+             });
+             // do the rest of the cleanup...
+        });
+    }
+
 
 }
