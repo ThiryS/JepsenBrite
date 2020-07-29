@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Créer un événement') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('events.create') }}">
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('events.create') }}">
                         @csrf
 
                         <div class="form-group row">

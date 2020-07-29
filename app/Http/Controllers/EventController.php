@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Intervention\Image\Facades\Image as Image;
 use Illuminate\Pagination\Paginator;
 use App\Event;
 use App\Comment;
@@ -24,6 +25,7 @@ class EventController extends Controller
              'description' => ['required', 'string', 'max:2058'],
              'date' => ['required', 'date'],
              'category' => ['required', 'string'],
+             'image' => 'nullable'
          ]);
      }
 
@@ -84,6 +86,7 @@ class EventController extends Controller
             'date' => $data['date'],
             'category' =>$data['category'],
         ]);
+
         Auth::user()->events()->save($event);
         return $event;
     }

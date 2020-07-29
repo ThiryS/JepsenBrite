@@ -21,7 +21,7 @@ class CreateEventsTable extends Migration
             $table->float('lat')->nullable();
             $table->float('lng')->nullable();
             $table->text('description');
-            $table->text('image')->nullable();
+            $table->string('image')->nullable();
             $table->string('category')->nullable();
             $table->timestamps();
         });
