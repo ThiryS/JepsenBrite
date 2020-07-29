@@ -2,16 +2,17 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ $event->name }}</div>
-
-                <div class="card-body">
-                  {{ $event->description }}
-                </div>
+    <div class="row"> 
+        <div class="card" style="width: 18rem;">
+            {{ $event->image }}
+            <div class="card-body">
+                <h5 class="card-title">{{ $event->name }}</h5>
+                <p class="card-text">{{ $event->description }}</p>
+                <p class="card-text">{{ $event->category }}</p>
+                <a href="#" class="btn btn-primary">Modify</a>
             </div>
         </div>
     </div>
 </div>
 @endsection
+

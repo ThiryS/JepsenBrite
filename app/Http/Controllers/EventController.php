@@ -19,8 +19,10 @@ class EventController extends Controller
      {
          return Validator::make($data, [
              'name' => ['required', 'string', 'max:255'],
+             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg','max:2048'],
              'description' => ['required', 'string', 'max:2058'],
              'date' => ['required', 'date'],
+             'category' => ['required', 'string'],
          ]);
      }
 
@@ -49,6 +51,7 @@ class EventController extends Controller
         return view('events/new');
     }
 
+
     public function create(Request $request)
     {
       // validators
@@ -58,6 +61,23 @@ class EventController extends Controller
       // redirect to
       return \Redirect::route('events.show', $event->id)->with('success', 'Event sauvé!');
     }
+
+    //store the image of event 
+
+    public function store()
+    {
+        $data = request()-> validate([
+            'image'=> 'required',
+            'image' => ['required', 'image'],
+        ]);
+
+        dd(request('image')->store('uploads','public'));
+
+        auth()->user()->posts()->create($data);
+
+        dd(request()->all());
+    }
+
 
     /**
      * Create a new user instance after a valid registration.
@@ -69,9 +89,12 @@ class EventController extends Controller
     {
         $event = new Event([
             'name' => $data['name'],
+            'image' => $data['image'],
             'description' => $data['description'],
             'date' => $data['date'],
+            'category' => $data['category'],
         ]);
+        
         Auth::user()->events()->save($event);
         return $event;
     }

@@ -23,6 +23,8 @@ class CreateEventsTable extends Migration
             $table->text('description');
             $table->text('image')->nullable();
             $table->timestamps();
+            $table->string('category');
+
         });
     }
 

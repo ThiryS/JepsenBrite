@@ -12,9 +12,12 @@
                       <a href="{{ route('events.new') }}">Créer un événement</a>
                   @endauth
                   @foreach ($events as $event)
+
                     <p>
-                      This is event <a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a>
-                       user: {{ $event->user->name}}
+                      This is event <a href="{{ route('events.show', $event->id) }}">{{ $event->name }} <br /></a>
+                      {{ $event->user->image}} 
+                      <br />
+                       User: {{ $event->user->name}}
                     </p>
                   @endforeach
                 </div>
