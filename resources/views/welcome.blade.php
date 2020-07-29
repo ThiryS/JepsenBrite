@@ -99,11 +99,9 @@
                               @if ($event->date >= now())
                               <div class="col-sm-4">
                                 <div class="card" style="width: 18rem; margin-bottom: 1em; margin-top: 1em;">
-                                  @if($event->image === NULL)
-                                  <img class="card-img-top" src="event.jpg" alt="Card image cap">
-                                  @else
-                                  <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
-                                  @endif
+
+                                  <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap">
+                                  
                                   <div class="card-body">
                                     <h5 class="card-title">{{ $event->name }}</h5>
                                     <p class="card-text">@parsedown($event->description)</p>
