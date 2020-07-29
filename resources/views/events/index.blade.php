@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                   @auth
-                      <a style="margin-bottom: 20px" class="btn btn-primary" href="{{ route('events.new') }}">Créer un événement</a>
+                      <a style="margin-bottom: 20px" class="btn btn-primary" href="{{ route('events.create') }}">Créer un événement</a>
                   @endauth
                   <table class="table table-bordered">
                     <tr class="thead-light">

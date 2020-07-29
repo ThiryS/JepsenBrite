@@ -57,19 +57,9 @@ class EventController extends Controller
         return view('events/show', ['event' => $event]);
     }
 
-    public function new()
+    public function create()
     {
-        return view('events/new');
-    }
-
-    public function create(Request $request)
-    {
-      // validators
-      $this->validator($request->all())->validate();
-      // create event
-      $event = $this->createEvent($request->all());
-      // redirect to
-      return \Redirect::route('events.show', $event->id)->with('success', 'Event sauvé!');
+        return view('events/create');
     }
 
     /**
@@ -78,35 +68,66 @@ class EventController extends Controller
      * @param  array  $data
      * @return \App\Event
      */
-    protected function createEvent(array $data)
+    protected function store(Event $event)
     {
-        $event = new Event([
+        $data = request()->validate([
+            'name' => 'required',
+            'description' => 'required',
+            'date' => 'required',
+            'category' => 'required',
+            'image' => 'nullable'
+        ]);
+
+        if(request('image') != null)
+        {
+            $imagePath = request('image')->store('uploads', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+            $image->save();
+
+        }else{
+            $imagePath = "../event.jpg";
+        };
+
+        Auth::user()->events()->create([
             'name' => $data['name'],
             'description' => $data['description'],
             'date' => $data['date'],
-            'category' =>$data['category'],
+            'category' => $data['category'],
+            'image' => $imagePath
         ]);
 
-        Auth::user()->events()->save($event);
-        return $event;
+        return redirect('/events/'.$event->id)->with('success', 'Event sauvé!');
     }
+
     public function edit($id)
     {
         $event = Event::find($id);
         return view('events.edit', ['event' => $event]);
     }
+
     public function update(Request $request, $id)
     {
-
-
-        $this->validator($request->all())->validate();
+        $data = $this->validator($request->all())->validate();
         $event = Event::find($id);
         $event->name =  $request->get('name');
         $event->description = $request->get('description');
         $event->date = $request->get('date');
         $event->category = $request->get('category');
-        $event->save();
+        $event->image = $request->get('image');
 
+        if(request('image') != null)
+         {
+             $imagePath = request('image')->store('uploads', 'public');
+             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+             $image->save();
+         } else {
+             $imagePath = $user->profile->image;
+         }
+
+        $event->update(array_merge(
+            $data,
+            ['image' => $imagePath],
+        ));
 
         return \Redirect::route('events.show', $event->id)->with('success', 'Event modifié!');
 

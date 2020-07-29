@@ -5,7 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ $event->name }} @if ($event->user->id === Auth::user()->id) <a href="{{ route('events.edit', $event->id) }}">Modifier</a>
+                <div class="card-header">{{ $event->name }} 
+                @if($event->user == Auth::user()) 
+                  <a href="{{ route('events.edit', $event->id) }}">Modifier</a>
                   <form action="{{ route('events.destroy', $event->id)}}" method="post">
                     @csrf
                     @method('DELETE')
