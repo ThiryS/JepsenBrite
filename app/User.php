@@ -44,8 +44,19 @@ class User extends Authenticatable implements MustVerifyEmail
         static::created(function ($user) {
             $user->profile()->create([
                 'name' => $user->name,
+                'image' => ''
             ]
             );
+        });
+
+        self::deleting(function($user) { // before delete() method call this
+            $user->profile()->delete(); 
+            $user->events()->each(function($event) {
+               $event->delete(); 
+            });
+            $user->comments()->each(function($comment) {
+                $comment->delete();
+            });
         });
     }
 
