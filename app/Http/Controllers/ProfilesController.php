@@ -47,7 +47,7 @@ class ProfilesController extends Controller
 
         auth()->user()->profile->update(array_merge(
             $data,
-            ['image' => $imagePath],
+            ['image' => $imagePath]
         ));
 
        return \Redirect::route('profile.show', $user);
