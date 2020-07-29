@@ -28,7 +28,7 @@
             </div>
             @foreach ($event->comments as $comment)
             <p>
-              Commentaire: {{$comment->comment}} de: {{ $comment->user->name}} posté: {{$comment->updated_at}}
+              Commentaire: {{$comment->comment}} de: <a href="../profile/{{ $comment->user->id }}">{{ $comment->user->name}}</a> posté: {{$comment->updated_at}}
             </p>
             @endforeach
             @auth

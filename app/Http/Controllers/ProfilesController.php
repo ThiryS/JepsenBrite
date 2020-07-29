@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image as Image;;
+use Intervention\Image\Facades\Image as Image;
 
 class ProfilesController extends Controller
 {
@@ -20,9 +20,6 @@ class ProfilesController extends Controller
 
    /**
     * Create a new event instance after a valid registration.
-    *
-    * @param  array  $data
-    * @return \App\Event
     */
    public function edit(User $user)
    {
@@ -38,17 +35,21 @@ class ProfilesController extends Controller
            'image' => ['nullable', 'image'],
        ]);
 
-       if(request('image'))
+       if(request('image') != null)
         {
             $imagePath = request('image')->store('profile', 'public');
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
             $image->save();
+        } else {
+            $imagePath = $user->profile->image;
         }
 
         auth()->user()->profile->update(array_merge(
             $data,
             ['image' => $imagePath],
         ));
+
+        auth()->user()->update(['name' => $data['name']]);
 
        return \Redirect::route('profile.show', $user);
    }
