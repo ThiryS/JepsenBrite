@@ -75,7 +75,7 @@ class EventController extends Controller
             'description' => 'required',
             'date' => 'required',
             'category' => 'required',
-            'image' => 'nullable'
+            'image' => ['nullable', 'image']
         ]);
 
         if(request('image') != null)
