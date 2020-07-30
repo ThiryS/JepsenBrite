@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Modifier un événement') }}</div>
 
                 <div class="card-body">
-                    <form method="post" action="{{ route('events.update', $event->id) }}">
+                    <form method="post" enctype="multipart/form-data" action="{{ route('events.update', $event->id) }}">
                         @csrf
                         @method('PUT')
                         <div class="form-group row">
@@ -71,6 +71,24 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="image" class="col-md-4 col-form-label text-md-right">Profile image</label>
+
+                            <div class="col-md-6">
+                                <input id="form-control-file" type="file" name="image" class="@error('image') is-invalid @enderror">
+                            </div>
+
+                            @if($errors->has('image'))
+                                {{ $errors->first('image') }}
+                            @endif
+
+                            @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
 
                         <div class="form-group row mb-0">

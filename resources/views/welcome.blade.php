@@ -59,11 +59,18 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
 
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}" onclick="">
                                         {{ __('View profile') }}
                                     </a>
 
+=======
+                                    <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}" onclick="">
+                                        {{ __('View profile') }}
+                                    </a>
+                                    
+>>>>>>> d6a49ca9e19b21a2a197f5b05342c53965213d2f
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -89,34 +96,50 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                   <img src="unnamed.jpg" alt="bannier">
-                    <div class="card">
+                    <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header">{{ __('Evenements à venir') }}</div>
 
 
-                        <div class="card-body">
-                          <div class="row">
-
+                        <div class="card-body" >
                             @foreach ($events->sortBy('date') as $event)
                               @if ($event->date >= now())
-                              <div class="col-sm-4">
-                                <div class="card" style="width: 18rem; margin-bottom: 1em; margin-top: 1em;">
-                                  @if($event->image === NULL)
-                                  <img class="card-img-top" src="event.jpg" alt="Card image cap">
-                                  @else
-                                  <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
-                                  @endif
-                                  <div class="card-body">
-                                    <h5 class="card-title">{{ $event->name }}</h5>
-                                    <p class="card-text">@parsedown($event->description)</p>
-                                  </div>
-                                  <ul class="list-group list-group-flush">
-                                    <li class="list-group-item">Catégorie: {{ $event->category }}</li>
-                                    <li class="list-group-item">Date: {{ date('d-m-Y', strtotime($event->date)) }}</li>
-                                  </ul>
-                                  <div class="card-body">
-                                    <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
-                                  </div>
-                                </div>
+                                @if ($loop->first)
+                                    <div class="card mb-3" style="width: 65rem; margin-bottom: 1em; margin-top: 1em; margin-left: 1rem;">
+                                        <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
+                                        <div class="card-body">
+                                            <h5 class="card-title">{{ $event->name }}</h5>
+                                            <p class="card-text">@parsedown($event->description)</p>
+                                        </div>
+                                        <ul class="list-group list-group-flush">
+                                            <li class="list-group-item">Catégorie: {{ $event->category }}</li>
+                                            <li class="list-group-item">Date: {{ date('d-m-Y', strtotime($event->date)) }}</li>
+                                        </ul>
+                                        <div class="card-body">
+                                            <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
+                                        </div>
+                                    </div>
+                                @endif
+
+                                @if(!$loop->first)
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                    <div class="card" style="width: 18rem; margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
+                                    
+                                    <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap">
+                                    
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $event->name }}</h5>
+                                        <p class="card-text">@parsedown($event->description)</p>
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                        <li class="list-group-item">Catégorie: {{ $event->category }}</li>
+                                        <li class="list-group-item">Date: {{ date('d-m-Y', strtotime($event->date)) }}</li>
+                                    </ul>
+                                    <div class="card-body">
+                                        <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
+                                    </div>
+                                    </div>
+                                @endif
                               </div>
                               @endif
                               @endforeach

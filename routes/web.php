@@ -28,9 +28,9 @@ Route::get('/events/{id}/edit', 'EventController@edit')->name('events.edit')->mi
 Route::put('/events/{id}', 'EventController@update')->name('events.update')->middleware('verified');
 Route::delete('/events/{id}', 'EventController@destroy')->name('events.destroy')->middleware('verified');
 
-Route::get('/events/new', 'EventController@new')->name('events.new')->middleware('verified');
+Route::get('/events/create', 'EventController@create')->name('events.create')->middleware('verified');
 Route::get('/events/{id}', 'EventController@find')->name('events.show');
-Route::post('/events', 'EventController@create')->name('events.create')->middleware('verified');
+Route::post('/events', 'EventController@store')->name('events.store')->middleware('verified');
 
 Route::post('/events/{id}/comments', 'CommentsController@create')->name('comments.create')->middleware('verified');
 

@@ -9,7 +9,7 @@
 
                 <div class="card-body">
                   @auth
-                      <a style="margin-bottom: 20px" class="btn btn-primary" href="{{ route('events.new') }}">Créer un événement</a>
+                      <a style="margin-bottom: 20px" class="btn btn-primary" href="{{ route('events.create') }}">Créer un événement</a>
                   @endauth
                   <table class="table table-bordered">
                     <tr class="thead-light">
@@ -24,14 +24,14 @@
                       <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
                       <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
                       <td>{{ $event->category }}</td>
-                      <td>{{ $event->user->name}}</td>
+                      <td><a href="profile/{{ $event->user->id }}">{{ $event->user->name}}</a></td>
                     </tr>
                     @else
                     <tr class="table-secondary">
                       <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
                       <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
                       <td>{{ $event->category }}</td>
-                      <td>{{ $event->user->name}}</td>
+                      <td><a href="{{ route('profile.show', $user->id) }}">{{ $event->user->name}}</a></td>
                     </tr>
                     @endif
                     @endforeach
