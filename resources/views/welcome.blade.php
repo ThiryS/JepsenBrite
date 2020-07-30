@@ -59,18 +59,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
-
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}" onclick="">
                                         {{ __('View profile') }}
                                     </a>
 
-=======
-                                    <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}" onclick="">
-                                        {{ __('View profile') }}
-                                    </a>
-                                    
->>>>>>> d6a49ca9e19b21a2a197f5b05342c53965213d2f
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -124,9 +116,9 @@
                                 <div class="row">
                                     <div class="col-sm-4">
                                     <div class="card" style="width: 18rem; margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
-                                    
+
                                     <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap">
-                                    
+
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $event->name }}</h5>
                                         <p class="card-text">@parsedown($event->description)</p>
