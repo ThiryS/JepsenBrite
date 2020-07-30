@@ -38,7 +38,6 @@ class EventController extends Controller
     {
         // Retrieve events from db using eloquent
         $events = Event::all();
-
         // render the view with the events
         return view('events/index', ['events' => $events]);
     }
@@ -46,8 +45,7 @@ class EventController extends Controller
     public function indexWelcome()
     {
         // Retrieve events from db using eloquent
-        $events = Event::where('date', '>=',  now())->orderBy('date', 'asc')->paginate(21);
-
+        $events = Event::paginate(21);
         // render the view with the events
         return view('welcome', ['events' => $events]);
     }
