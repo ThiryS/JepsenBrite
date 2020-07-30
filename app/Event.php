@@ -16,7 +16,6 @@ class Event extends Model
     protected $fillable = [
         'name', 'description', 'image', 'date', 'lat', 'lng', 'category',
     ];
-
     /**
      * Get the user record associated with the event.
      */

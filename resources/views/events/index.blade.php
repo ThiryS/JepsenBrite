@@ -31,7 +31,7 @@
                       <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
                       <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
                       <td>{{ $event->category }}</td>
-                      <td><a href="{{ route('profile.show', $user->id) }}">{{ $event->user->name}}</a></td>
+                      <td><a href="profile/{{ $event->user->id }}">{{ $event->user->name}}</a></td>
                     </tr>
                     @endif
                     @endforeach
