@@ -29,12 +29,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" required>{{ old('description') }}</textarea>
-                                <script type="text/javascript">
-  $(document).ready(function() {
-    $("#example1").emojioneArea();
-  });
-</script>
+                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" data="data-emojiable="true"" name="description" required>{{ old('description') }}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -108,4 +103,9 @@
         </div>
     </div>
 </div>
+<!-- ** Don't forget to Add jQuery here ** -->
+<script src="lib/js/config.js"></script>
+<script src="lib/js/util.js"></script>
+<script src="lib/js/jquery.emojiarea.js"></script>
+<script src="lib/js/emoji-picker.js"></script>
 @endsection
