@@ -31,7 +31,7 @@
                             <th scope="col">Date</th>
                             <th scope="col">Categorie</th>
                         </tr>
-                    @foreach($user->events as $event)
+                    @foreach($user->events->sortBy('date') as $event)
                     @if ($event->date > now())
                     <tr>
                         <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
