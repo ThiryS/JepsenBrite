@@ -19,6 +19,8 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="file/to/path/css/emojionearea.min.css">
+    <script type="text/javascript" src="file/to/path/js/emojionearea.min.js"></script>
 </head>
 <body>
     <div id="app">
