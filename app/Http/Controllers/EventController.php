@@ -97,7 +97,7 @@ class EventController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect('/events/'.$event->id)->with('success', 'Event sauvé!');
+        return \Redirect::route('events.show', $event->id)->with('success', 'Event créé!'); 
     }
 
     public function edit($id)
