@@ -89,7 +89,6 @@ class EventController extends Controller
             $imagePath = "../event.jpg";
         };
 
-        dd($imagePath);
         Auth::user()->events()->create([
             'name' => $data['name'],
             'description' => $data['description'],
