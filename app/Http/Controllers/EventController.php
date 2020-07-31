@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image as Image;
 use Illuminate\Pagination\Paginator;
-use JD\Cloudder\Facades\Cloudder;
+use JD\Cloudder\Facades\Cloudder as Cloudder;
 use App\Event;
 use App\Comment;
 
