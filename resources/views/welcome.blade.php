@@ -96,7 +96,7 @@
                           <div class="row">
                             @foreach ($events as $event)
 
-                                    @if ($event === $loop->first)
+                                    @if ($event == $loop->first)
 
                                         <div class="card col-mb-12" style="margin-bottom: 1em; margin-top: 1em; margin-left: 1rem;">
                                             <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
@@ -116,7 +116,7 @@
                                     @endif
 
                                     @if($event != $loop->first)
-                                        <div class="card col-sm-4" style="margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
+                                        <div class="card col-sm-3" style="margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
 
                                         <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap">
 
