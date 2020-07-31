@@ -41,7 +41,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/events') }}">Events</a>
+                            <a class="nav-link" href="{{ url('/events') }}">Past events</a>
                         </li>
                         @guest
                             <li class="nav-item">

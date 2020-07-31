@@ -93,11 +93,32 @@
 
 
                         <div class="card-body" >
-                            @foreach ($events->sortBy('date') as $event)
-                              @if ($event->date >= now())
-                                @if ($loop->first)
-                                    <div class="card mb-3" style="width: 65rem; margin-bottom: 1em; margin-top: 1em; margin-left: 1rem;">
-                                        <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
+                            @foreach ($events as $event)
+                                
+                                    @if ($event == $loop->first)
+                                        <div class="card mb-3" style="width: 65rem; margin-bottom: 1em; margin-top: 1em; margin-left: 1rem;">
+                                            <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
+                                            <div class="card-body">
+                                                <h5 class="card-title">{{ $event->name }}</h5>
+                                                <p class="card-text">@parsedown($event->description)</p>
+                                            </div>
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Catégorie: {{ $event->category }}</li>
+                                                <li class="list-group-item">Date: {{ date('d-m-Y', strtotime($event->date)) }}</li>
+                                            </ul>
+                                            <div class="card-body">
+                                                <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
+                                            </div>
+                                        </div>
+                                    @endif
+
+                                    @if($event != $loop->first)
+                                    <div class="row">
+                                        <div class="col-sm-4">
+                                        <div class="card" style="width: 18rem; margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
+                                        
+                                        <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap">
+                                        
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $event->name }}</h5>
                                             <p class="card-text">@parsedown($event->description)</p>
@@ -109,7 +130,9 @@
                                         <div class="card-body">
                                             <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
                                         </div>
+                                        </div>
                                     </div>
+<<<<<<< HEAD
                                 @endif
 
                                 @if(!$loop->first)
@@ -135,6 +158,10 @@
                               </div>
                               @endif
                               @endforeach
+=======
+                                    @endif
+                            @endforeach
+>>>>>>> faff25e8e22f5fb2dbbfe13c9cf2abb5912ddf33
                             </div>
                           {{ $events->links() }}
                         </div>
