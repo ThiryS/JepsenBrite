@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image as Image;
+use JD\Cloudder\Facades\Cloudder as Cloudder;
 
 class ProfilesController extends Controller
 {
