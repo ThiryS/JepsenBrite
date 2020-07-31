@@ -104,7 +104,7 @@
                                     @if ($event == $loop->first)
 
                                         <div class="card col-md-12" style="margin-bottom: 1em; margin-top: 1em;">
-                                            <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
+                                            <img class="card-img-top" src="{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $event->name }}</h5>
                                                 <p class="card-text">@parsedown($event->description)</p>

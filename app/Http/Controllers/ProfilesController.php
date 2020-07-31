@@ -37,9 +37,9 @@ class ProfilesController extends Controller
 
        if(request('image') != null)
         {
-            $imagePath = request('image')->store('profile', 'public');
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
-            $image->save();
+          Cloudder::upload(request('image')->fit(1000, 1000));
+          $c=Cloudder::getResult();
+          $imagePath = $c['url'];
         } else {
             $imagePath = $user->profile->image;
         }

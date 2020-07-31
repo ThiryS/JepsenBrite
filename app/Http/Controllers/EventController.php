@@ -81,7 +81,7 @@ class EventController extends Controller
 
         if(request('image') != null)
         {
-          Cloudder::upload(request('image'));
+          Cloudder::upload(request('image')->fit(1000, 1000));
           $c=Cloudder::getResult();
           $imagePath = $c['url'];
 
@@ -118,9 +118,9 @@ class EventController extends Controller
 
         if(request('image') != null)
          {
-             $imagePath = request('image')->store('uploads', 'public');
-             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
-             $image->save();
+           Cloudder::upload(request('image')->fit(1000, 1000));
+           $c=Cloudder::getResult();
+           $imagePath = $c['url'];
          } else {
              $imagePath = $event->image;
          }
