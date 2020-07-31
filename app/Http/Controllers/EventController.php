@@ -80,7 +80,9 @@ class EventController extends Controller
 
         if(request('image') != null)
         {
-          $imagePath = Image::putFile('image', $data->file('image'))->fit(1000, 1000);
+          \Cloudder::upload(request('image'));
+          $c=\Cloudder::getResult();
+          $imagePath = $c['url'];
 
         }else{
             $imagePath = "../event.jpg";
