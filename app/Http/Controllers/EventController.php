@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image as Image;
 use Illuminate\Pagination\Paginator;
+use JD\Cloudder\Facades\Cloudder;
 use App\Event;
 use App\Comment;
 
@@ -80,8 +81,8 @@ class EventController extends Controller
 
         if(request('image') != null)
         {
-          \Cloudder::upload(request('image'));
-          $c=\Cloudder::getResult();
+          Cloudder::upload(request('image'));
+          $c=Cloudder::getResult();
           $imagePath = $c['url'];
 
         }else{
