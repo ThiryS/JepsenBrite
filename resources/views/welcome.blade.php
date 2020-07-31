@@ -98,7 +98,7 @@
 
                                     @if ($event == $loop->first)
 
-                                        <div class="card col-mb-12" style="margin-bottom: 1em; margin-top: 1em; margin-left: 1rem;">
+                                        <div class="card col-md-12" style="margin-bottom: 1em; margin-top: 1em; margin-left: 1rem;">
                                             <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
                                             <div class="card-body">
                                                 <h5 class="card-title">{{ $event->name }}</h5>
@@ -116,7 +116,7 @@
                                     @endif
 
                                     @if($event != $loop->first)
-                                        <div class="card col-sm-3" style="margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
+                                        <div class="card col-sm-''" style="margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
 
                                         <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap">
 
