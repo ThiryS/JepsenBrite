@@ -30,7 +30,11 @@
 
                             <div class="col-md-6">
                                 <textarea id="description" class="form-control @error('description') is-invalid @enderror" name="description" required>{{ old('description') }}</textarea>
-                                <script type="text/javascript"> (document).ready(function() {$("#description").emojioneArea({standalone: true }); </script>
+                                <script type="text/javascript">
+  $(document).ready(function() {
+    $("#example1").emojioneArea();
+  });
+</script>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
