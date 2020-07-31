@@ -88,7 +88,7 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                   <img src="unnamed.jpg" alt="bannier" style="width: 100%">
-                    <div class="card" style="margin-bottom: 50px;">
+                    <div class="card d-flex justify-content-between align-items-baseline" style="margin-bottom: 50px;">
                         <div class="card-header">{{ __('Evenements à venir') }}
 
                             @auth
