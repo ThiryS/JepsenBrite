@@ -29,7 +29,7 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
 
                             <div class="col-md-6">
-                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" data="data-emojiable="true"" name="description" required>{{ old('description') }}</textarea>
+                                <textarea id="description" class="form-control @error('description') is-invalid @enderror" data-emojiable="true" name="description" required>{{ old('description') }}</textarea>
                                 @error('description')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
