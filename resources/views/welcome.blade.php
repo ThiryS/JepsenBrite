@@ -88,8 +88,8 @@
             <div class="row justify-content-center">
                 <div class="col-md-12">
                   <img src="unnamed.jpg" alt="bannier" style="width: 100%">
-                    <div class="card d-flex justify-content-between align-items-baseline" style="margin-bottom: 50px;">
-                        <div class="card-header">{{ __('Evenements à venir') }}
+                    <div class="card" style="margin-bottom: 50px;">
+                        <div class="card-header d-flex justify-content-between align-items-baseline">{{ __('Evenements à venir') }}
 
                             @auth
                                 <a style="margin-bottom: 20px" class="btn btn-primary" href="{{ route('events.create') }}">Créer un événement</a>
