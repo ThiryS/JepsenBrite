@@ -54,7 +54,7 @@
 
                       <div class="col-md-6">
                           <textarea id="comment" class="form-control @error('comment') is-invalid @enderror" name="comment" required>{{ old('comment') }}</textarea>
-          
+
                           @error('comment')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
@@ -76,9 +76,9 @@
         </div>
     </div>
 </div>
-<!-- ** Don't forget to Add jQuery here ** -->
-<script src="lib/js/config.js"></script>
-<script src="lib/js/util.js"></script>
-<script src="lib/js/jquery.emojiarea.js"></script>
-<script src="lib/js/emoji-picker.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#comment").emojioneArea();
+  });
+</script>
 @endsection

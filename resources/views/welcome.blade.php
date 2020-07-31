@@ -93,7 +93,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
-                  <img src="unnamed.jpg" alt="bannier" style="width: 100%">
+                  <img src="unnamed.png" alt="bannier" style="width: 100%">
                     <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header d-flex justify-content-between align-items-baseline">{{ __('Evenements à venir') }}
 
