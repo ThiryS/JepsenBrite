@@ -94,7 +94,7 @@
 
                         <div class="card-body" >
                             @foreach ($events as $event)
-                                
+
                                     @if ($event == $loop->first)
                                         <div class="card mb-3" style="width: 65rem; margin-bottom: 1em; margin-top: 1em; margin-left: 1rem;">
                                             <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
@@ -116,9 +116,9 @@
                                     <div class="row">
                                         <div class="col-sm-4">
                                         <div class="card" style="width: 18rem; margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
-                                        
+
                                         <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap">
-                                        
+
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $event->name }}</h5>
                                             <p class="card-text">@parsedown($event->description)</p>
@@ -132,7 +132,6 @@
                                         </div>
                                         </div>
                                     </div>
-<<<<<<< HEAD
                                 @endif
 
                                 @if(!$loop->first)
@@ -156,12 +155,8 @@
                                     </div>
                                 @endif
                               </div>
-                              @endif
+                              
                               @endforeach
-=======
-                                    @endif
-                            @endforeach
->>>>>>> faff25e8e22f5fb2dbbfe13c9cf2abb5912ddf33
                             </div>
                           {{ $events->links() }}
                         </div>
