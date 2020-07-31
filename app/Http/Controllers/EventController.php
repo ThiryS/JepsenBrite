@@ -80,7 +80,7 @@ class EventController extends Controller
 
         if(request('image') != null)
         {
-          $imagePath = Image::putFile('image', $request->file('image'))->fit(1000, 1000);
+          $imagePath = Image::putFile('image', $data->file('image'))->fit(1000, 1000);
 
         }else{
             $imagePath = "../event.jpg";
