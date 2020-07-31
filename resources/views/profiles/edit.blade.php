@@ -10,7 +10,7 @@
             <div class="col-8 offset-2 pt-3">
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom d'utilsateur') }}</label>
+                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom utilsateur') }}</label>
 
                     <div class="col-md-6">
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $user->profile->name}}" autocomplete="name" autofocus>
