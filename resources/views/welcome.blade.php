@@ -96,6 +96,7 @@
                             @foreach ($events as $event)
 
                                     @if ($event == $loop->first)
+                                    <div class="row">
                                         <div class="card mb-3" style="width: 65rem; margin-bottom: 1em; margin-top: 1em; margin-left: 1rem;">
                                             <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
                                             <div class="card-body">
@@ -110,6 +111,8 @@
                                                 <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
                                             </div>
                                         </div>
+                                    </div>
+
                                     @endif
 
                                     @if($event != $loop->first)
