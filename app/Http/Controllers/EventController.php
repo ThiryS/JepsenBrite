@@ -117,9 +117,7 @@ class EventController extends Controller
 
         if(request('image') != null)
          {
-             $imagePath = request('image')->store('uploads', 'public');
-             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
-             $image->save();
+             $imagePath = Storage::putFile('image', $request->file('image'))->fit(1000, 1000);
          } else {
              $imagePath = $event->image;
          }
