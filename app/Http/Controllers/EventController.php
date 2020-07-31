@@ -80,7 +80,9 @@ class EventController extends Controller
 
         if(request('image') != null)
         {
-            $imagePath = Image::putFile('uploads', $request->file('image'))->fit(1000, 1000);
+          $imagePath = request('image')->store('uploads');
+          $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+          $image->save();
 
         }else{
             $imagePath = "../event.jpg";
@@ -115,7 +117,9 @@ class EventController extends Controller
 
         if(request('image') != null)
          {
-             $imagePath = Storage::putFile('image', $request->file('image'))->fit(1000, 1000);
+             $imagePath = request('image')->store('uploads', 'public');
+             $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+             $image->save();
          } else {
              $imagePath = $event->image;
          }
