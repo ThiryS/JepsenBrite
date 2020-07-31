@@ -93,10 +93,11 @@
 
 
                         <div class="card-body" >
+                          <div class="row">
                             @foreach ($events as $event)
 
                                     @if ($event == $loop->first)
-                                    <div class="row">
+
                                         <div class="card mb-12" style="margin-bottom: 1em; margin-top: 1em; margin-left: 1rem;">
                                             <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap" style="height: 300px; object-fit: cover;">
                                             <div class="card-body">
@@ -111,14 +112,11 @@
                                                 <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
                                             </div>
                                         </div>
-                                    </div>
 
                                     @endif
 
                                     @if($event != $loop->first)
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                        <div class="card" style="margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
+                                        <div class="card col-sm-4" style="margin-bottom: 1em; margin-top: 1em; margin-left: 2rem;">
 
                                         <img class="card-img-top" src="storage/{{ $event->image }}" alt="Card image cap">
 
@@ -134,7 +132,6 @@
                                             <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
                                         </div>
                                         </div>
-                                    </div>
                                 @endif
                               @endforeach
                             </div>
