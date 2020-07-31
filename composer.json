@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.2.5",
         "cloudinary/cloudinary_php": "^1.17",
+        "emojione/emojione": "^4.5",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",
