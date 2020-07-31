@@ -56,7 +56,7 @@
                           <textarea id="comment" class="form-control @error('comment') is-invalid @enderror" name="comment" required>{{ old('comment') }}</textarea>
                           <script type="text/javascript">
   $(document).ready(function() {
-    $("comment").emojioneArea();
+    $(comment).emojioneArea();
   });
 </script>
                           @error('comment')
