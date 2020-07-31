@@ -132,7 +132,7 @@
                                         <ul class="list-group list-group-flush">
                                             <li class="list-group-item">Catégorie: {{ $event->category }}</li>
                                             <li class="list-group-item">Date: {{ date('d-m-Y', strtotime($event->date)) }}</li>
-                                            <li class="list-group-item">Créateur: <a href="{{ route('profile.show', $event->user->name) }}">{{ $event->user->name }}</a></li>
+                                            <li class="list-group-item">Créateur: <a href="{{ route('profile.show', $event->user->id) }}">{{ $event->user->name }}</a></li>
                                         </ul>
                                         <div class="card-body">
                                             <a href="{{ route('events.show', $event->id) }}" class="btn btn-primary">Plus d'infos</a>
