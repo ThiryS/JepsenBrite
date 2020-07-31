@@ -50,11 +50,11 @@
                         </li>
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Se conecter') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('S inscrire') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Créer un compte') }}</a>
                                 </li>
                             @endif
                         @else
@@ -66,7 +66,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}" onclick="">
-                                        {{ __('Mon profile') }}
+                                        {{ __('Mon profil') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
