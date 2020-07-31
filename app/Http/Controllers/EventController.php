@@ -121,7 +121,7 @@ class EventController extends Controller
              $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
              $image->save();
          } else {
-             $imagePath = $user->profile->image;
+             $imagePath = $event->image;
          }
 
         $event->update(array_merge(
