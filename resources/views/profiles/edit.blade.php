@@ -10,7 +10,7 @@
             <div class="col-8 offset-2 pt-3">
 
                 <div class="form-group row">
-                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nom d'utilsateur') }}</label>
 
                     <div class="col-md-6">
                         <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $user->profile->name}}" autocomplete="name" autofocus>
@@ -24,7 +24,7 @@
                 </div>
 
                 <div class="form-group row">
-                    <label for="image" class="col-md-4 col-form-label text-md-right">Profile image</label>
+                    <label for="image" class="col-md-4 col-form-label text-md-right">Image de profil</label>
 
                     <div class="col-md-6">
                         <input id="form-control-file" type="file" name="image" value="{{ old('image') ?? $user->profile->image }}">

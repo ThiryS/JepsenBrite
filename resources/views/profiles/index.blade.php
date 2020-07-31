@@ -10,10 +10,10 @@
             <div class="d-flex justify-content-between align-items-baseline">
                 <h1>{{ $user->profile->name }}</h1>
                 @can('update', $user->profile)
-                    <a href="{{ route('profile.edit', $user->id) }}">Modify profile</a>
+                    <a href="{{ route('profile.edit', $user->id) }}">Modifier son profil</a>
                 @endcan
             </div>
-            <p>{{ $user->events->count() }} events</p>
+            <p>{{ $user->events->count() }} événements</p>
         </div>
     </div>
 
@@ -21,7 +21,7 @@
         <div class="card-header d-flex justify-content-between align-items-baseline pt-4">
             <h4>Evenements créés</h4>
             @can('update', $user->profile)
-                <a href="{{ route('events.create') }}">Créer un nouvel événement</a>
+                <a class="btn brn-primary" href="{{ route('events.create') }}">Créer un nouvel événement</a>
             @endcan
         </div>
             <div class="card-body">
