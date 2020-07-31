@@ -53,12 +53,8 @@
                       <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Commentaire') }}</label>
 
                       <div class="col-md-6">
-                          <textarea id="comment"</textarea>
-                          <script type="text/javascript">
-  $(document).ready(function() {
-    $("#comment").emojioneArea();
-  });
-</script>
+                          <textarea id="comment" class="form-control @error('comment') is-invalid @enderror" name="comment" required>{{ old('comment') }}</textarea>
+          
                           @error('comment')
                               <span class="invalid-feedback" role="alert">
                                   <strong>{{ $message }}</strong>
