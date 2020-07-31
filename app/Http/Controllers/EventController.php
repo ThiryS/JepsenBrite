@@ -114,10 +114,11 @@ class EventController extends Controller
         $event->description = $request->get('description');
         $event->date = $request->get('date');
         $event->category = $request->get('category');
-        $event->image = $request->get('image');
+
 
         if(request('image') != null)
          {
+           $event->image = $request->get('image');
            Cloudder::upload(request('image'));
            $c=Cloudder::getResult();
            $imagePath = $c['url'];
