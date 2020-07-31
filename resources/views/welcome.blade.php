@@ -130,7 +130,7 @@
                                     @if($event != $loop->first)
                                         <div class="card col-sm-4" style="margin-bottom: 1em; margin-right: : 1rem;">
 
-                                        <img class="card-img-top" src="{{  $event->image }}" alt="Card image cap">
+                                        <img class="card-img-top" style="object-fit: cover;" src="{{  $event->image }}" alt="Card image cap">
 
                                         <div class="card-body">
                                             <h5 class="card-title">{{ $event->name }}</h5>
