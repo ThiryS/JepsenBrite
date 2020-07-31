@@ -41,15 +41,15 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/events') }}">Events</a>
+                            <a class="nav-link" href="{{ url('/events') }}">Evenements passés</a>
                         </li>
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Se connecter') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('S'inscrire') }}</a>
                                 </li>
                             @endif
                         @else
@@ -60,13 +60,13 @@
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}" onclick="">
-                                        {{ __('View profile') }}
+                                        {{ __('Mon profile') }}
                                     </a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Se déconnecter') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -87,9 +87,14 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-12">
-                  <img src="unnamed.jpg" alt="bannier">
+                  <img src="unnamed.jpg" alt="bannier" style="width: 100%">
                     <div class="card" style="margin-bottom: 50px;">
-                        <div class="card-header">{{ __('Evenements à venir') }}</div>
+                        <div class="card-header">{{ __('Evenements à venir') }}
+
+                            @auth
+                                <a style="margin-bottom: 20px" class="btn btn-primary" href="{{ route('events.create') }}">Créer un événement</a>
+                            @endauth
+                        </div>
 
 
                         <div class="card-body" >

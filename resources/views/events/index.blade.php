@@ -5,12 +5,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Tous des événemets') }}</div>
+                <div class="card-header">{{ __('Les événements passés') }}</div>
 
                 <div class="card-body">
-                  @auth
-                      <a style="margin-bottom: 20px" class="btn btn-primary" href="{{ route('events.create') }}">Créer un événement</a>
-                  @endauth
                   <table class="table table-bordered">
                     <tr class="thead-light">
                       <th scope="col">Nom</th>
