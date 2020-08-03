@@ -19,7 +19,7 @@
 
     <div class="card">
         <div class="card-header d-flex justify-content-between align-items-baseline pt-4">
-            <h4>Evenements créés</h4>
+            <h4>Evenements créés des eest </h4>
             @can('update', $user->profile)
                 <a class="btn btn-primary" href="{{ route('events.create') }}">Créer un nouvel événement</a>
             @endcan
