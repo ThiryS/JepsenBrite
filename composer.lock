@@ -5054,16 +5054,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.3.4",
+            "version": "2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "87335b120bc9652e4ee2bf285b7322a785211476"
+                "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/87335b120bc9652e4ee2bf285b7322a785211476",
-                "reference": "87335b120bc9652e4ee2bf285b7322a785211476",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/58dc4a8df3d41174c677a370b6779b694e4539e7",
+                "reference": "58dc4a8df3d41174c677a370b6779b694e4539e7",
                 "shasum": ""
             },
             "require": {
@@ -5122,7 +5122,7 @@
                 "laravel",
                 "page"
             ],
-            "time": "2020-07-27T15:17:39+00:00"
+            "time": "2020-08-01T21:20:01+00:00"
         },
         {
             "name": "facade/ignition-contracts",
@@ -6882,125 +6882,6 @@
             "description": "Library that helps with managing the version number of Git-hosted PHP projects",
             "homepage": "https://github.com/sebastianbergmann/version",
             "time": "2016-10-03T07:35:21+00:00"
-        },
-        {
-            "name": "shrikeh/teapot",
-            "version": "v1.0.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/shrikeh/teapot.git",
-                "reference": "879ad8e197b75d0a34afb92e0ec70b75fd5cf171"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/shrikeh/teapot/zipball/879ad8e197b75d0a34afb92e0ec70b75fd5cf171",
-                "reference": "879ad8e197b75d0a34afb92e0ec70b75fd5cf171",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.3.3",
-                "squizlabs/php_codesniffer": "^2.3"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-0": {
-                    "Teapot": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Barney Hanlon",
-                    "email": "barney@shrikeh.net"
-                }
-            ],
-            "description": "PHP HTTP Response Status library",
-            "homepage": "http://shrikeh.github.com/teapot",
-            "keywords": [
-                "http"
-            ],
-            "time": "2015-08-17T09:36:20+00:00"
-        },
-        {
-            "name": "squizlabs/php_codesniffer",
-            "version": "2.9.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/squizlabs/PHP_CodeSniffer.git",
-                "reference": "2acf168de78487db620ab4bc524135a13cfe6745"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/squizlabs/PHP_CodeSniffer/zipball/2acf168de78487db620ab4bc524135a13cfe6745",
-                "reference": "2acf168de78487db620ab4bc524135a13cfe6745",
-                "shasum": ""
-            },
-            "require": {
-                "ext-simplexml": "*",
-                "ext-tokenizer": "*",
-                "ext-xmlwriter": "*",
-                "php": ">=5.1.2"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "~4.0"
-            },
-            "bin": [
-                "scripts/phpcs",
-                "scripts/phpcbf"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.x-dev"
-                }
-            },
-            "autoload": {
-                "classmap": [
-                    "CodeSniffer.php",
-                    "CodeSniffer/CLI.php",
-                    "CodeSniffer/Exception.php",
-                    "CodeSniffer/File.php",
-                    "CodeSniffer/Fixer.php",
-                    "CodeSniffer/Report.php",
-                    "CodeSniffer/Reporting.php",
-                    "CodeSniffer/Sniff.php",
-                    "CodeSniffer/Tokens.php",
-                    "CodeSniffer/Reports/",
-                    "CodeSniffer/Tokenizers/",
-                    "CodeSniffer/DocGenerators/",
-                    "CodeSniffer/Standards/AbstractPatternSniff.php",
-                    "CodeSniffer/Standards/AbstractScopeSniff.php",
-                    "CodeSniffer/Standards/AbstractVariableSniff.php",
-                    "CodeSniffer/Standards/IncorrectPatternException.php",
-                    "CodeSniffer/Standards/Generic/Sniffs/",
-                    "CodeSniffer/Standards/MySource/Sniffs/",
-                    "CodeSniffer/Standards/PEAR/Sniffs/",
-                    "CodeSniffer/Standards/PSR1/Sniffs/",
-                    "CodeSniffer/Standards/PSR2/Sniffs/",
-                    "CodeSniffer/Standards/Squiz/Sniffs/",
-                    "CodeSniffer/Standards/Zend/Sniffs/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Greg Sherwood",
-                    "role": "lead"
-                }
-            ],
-            "description": "PHP_CodeSniffer tokenizes PHP, JavaScript and CSS files and detects violations of a defined set of coding standards.",
-            "homepage": "http://www.squizlabs.com/php-codesniffer",
-            "keywords": [
-                "phpcs",
-                "standards"
-            ],
-            "time": "2018-11-07T22:31:41+00:00"
         },
         {
             "name": "theseer/tokenizer",
