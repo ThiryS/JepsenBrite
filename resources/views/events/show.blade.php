@@ -45,7 +45,7 @@
             </div>
 
             <div class="pt-4 pb-5">
-              
+              @auth
               <form method="POST" action="{{ route('comments.create', $event->id) }}">
                   @csrf
 
@@ -71,7 +71,7 @@
                       </div>
                   </div>
               </form>
-            
+              @endauth
             </div>
         </div>
     </div>

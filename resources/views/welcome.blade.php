@@ -97,9 +97,9 @@
                     <div class="card" style="margin-bottom: 50px;">
                         <div class="card-header d-flex justify-content-between align-items-baseline">{{ __('Evenements à venir') }}
 
-                            
+                            @auth
                                 <a style="margin-bottom: 20px" class="btn btn-primary" href="{{ route('events.create') }}">Créer un événement</a>
-                            
+                            @endauth
                         </div>
 
 
