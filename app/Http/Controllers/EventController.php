@@ -128,7 +128,7 @@ class EventController extends Controller
 
         $event->update(array_merge(
             $data,
-            ['image' => $imagePath],
+            ['image' => $imagePath]
         ));
 
         return \Redirect::route('events.show', $event->id)->with('success', 'Event modifié!');
