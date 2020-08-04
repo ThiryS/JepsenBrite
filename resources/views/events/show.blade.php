@@ -19,7 +19,13 @@
               </div>
 
                 <div class="card-body">
+                <a href="{{ route('participate.show', $event->id) }}">{{ $event->participates_count }} </a>participants
                   <img src="{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
+                  <form action="{{ route('participate.create', $event->id)}}" method="post">
+                      @csrf
+                      @method('POST')
+                      <button class="btn btn-primary" type="submit">Participer</button>
+                  </form>
                   <p><strong>Date:</strong> {{ $event->date }}</p>
                   <p>
                   <strong>Description:</strong> @parsedown($event->description)

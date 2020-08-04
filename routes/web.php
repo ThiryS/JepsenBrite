@@ -33,6 +33,8 @@ Route::get('/events/{id}', 'EventController@find')->name('events.show');
 Route::post('/events', 'EventController@store')->name('events.store');
 
 Route::post('/events/{id}/comments', 'CommentsController@create')->name('comments.create');
+Route::post('/events/{id}/participates', 'ParticipateController@create')->name('participate.create');
+Route::get('/events/{id}/participants', 'ParticipateController@show')->name('participate.show');
 
 Auth::routes();
 
