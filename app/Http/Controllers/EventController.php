@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image as Image;
 use Illuminate\Pagination\Paginator;
 use JD\Cloudder\Facades\Cloudder as Cloudder;
+use App\Participate;
 use App\Event;
 use App\Comment;
 
@@ -53,7 +54,7 @@ class EventController extends Controller
 
     public function find($id)
     {
-        $event = Event::find($id);
+        $event = Event::where('id', $id)->withCount('participates')->firstOrFail();
         // render the view with the event
         return view('events/show', ['event' => $event]);
     }
