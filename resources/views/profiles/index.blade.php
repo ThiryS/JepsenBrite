@@ -29,7 +29,7 @@
                         <tr class="thead-light">
                             <th scope="col">Nom</th>
                             <th scope="col">Date</th>
-                            <th scope="col">Categorie</th>
+                            <th scope="col">Catégorie </th>
                         </tr>
                     @foreach($user->events->sortBy('date') as $event)
                     @if ($event->date > now())
@@ -43,6 +43,37 @@
                             <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
                             <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
                             <td>{{ $event->category }}</td>
+                        </tr>
+                    @endif
+                    @endforeach
+                </table>
+            </div>
+        </div>
+        <div class="card-header d-flex justify-content-between align-items-baseline pt-4">
+            <h4>Evenements participés</h4>
+            @can('update', $user->profile)
+                <a class="btn btn-primary" href="{{ route('events.create') }}">Créer un nouvel événement</a>
+            @endcan
+        </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                        <tr class="thead-light">
+                            <th scope="col">Nom</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Catégorie</th>
+                        </tr>
+                    @foreach($user->participates->sortBy('date') as $participate)
+                    @if ($participate->event->date > now())
+                    <tr>
+                        <td><a href="{{ route('events.show', $participate->event->id) }}">{{ $participate->event->name }}</a></td>
+                        <td>{{ date('d-m-Y', strtotime($participate->event->date)) }}</td>
+                        <td>{{ $participate->event->category }}</td>
+                    </tr>
+                    @else
+                        <tr class="table-secondary">
+                            <td><a href="{{ route('events.show', $participate->event->id) }}">{{ $participate->event->name }}</a></td>
+                            <td>{{ date('d-m-Y', strtotime($participate->event->date)) }}</td>
+                            <td>{{ $participate->event->category }}</td>
                         </tr>
                     @endif
                     @endforeach

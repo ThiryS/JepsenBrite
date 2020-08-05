@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
 use Intervention\Image\Facades\Image as Image;
 use JD\Cloudder\Facades\Cloudder as Cloudder;
+use App\Participate;
+use App\Event;
 
 class ProfilesController extends Controller
 {
