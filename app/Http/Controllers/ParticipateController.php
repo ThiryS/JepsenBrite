@@ -21,10 +21,16 @@ class ParticipateController extends Controller
     public function create(Request $request, $id)
     {
       $event = Event::find($id);
-
-      $participate = $this->createParticipate($event);
-      // redirect to
-      return \Redirect::route('events.show', $event->id)->with('success', 'Participation sauvée!');
+      $user=Auth::user();
+      $participateB = Participate::where('user_id', $user->id)->where('event_id', $id)->get();
+      if (count($participateB)) {
+        return \Redirect::route('events.show', $event->id)->with('warning', 'Vous participez déjà à l\'événement!');
+      }else {
+        $participate = $this->createParticipate($event);
+        // redirect to
+        return \Redirect::route('events.show', $event->id)->with('success', 'Participation sauvée!');
+      }
+      
     }
 
     protected function createParticipate($event)
@@ -40,4 +46,21 @@ class ParticipateController extends Controller
 
        return $participate;
    }
+
+   public function destroy($id)
+    {
+      $event = Event::find($id);
+      $user=Auth::user();
+      $participate = Participate::where('user_id', $user->id)->where('event_id', $id)->get();
+      if (count($participate) > 0) {
+        $participate = Participate::where('user_id', $user->id)->where('event_id', $id);
+        $participate->delete();
+        // redirect to
+        return \Redirect::route('events.show', $event->id)->with('success', 'Participation effacée!');
+      }else {
+        
+        return \Redirect::route('events.show', $event->id)->with('warning', 'Vous ne participez pas à l\'événement!');
+      }
+      
+    }
 }

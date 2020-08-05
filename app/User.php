@@ -10,6 +10,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -63,6 +65,15 @@ class User extends Authenticatable
     /**
      * Get the events from the user.
      */
+
+
+    const ADMIN_TYPE = 'admin';
+    const DEFAULT_TYPE = 'default';
+    
+    public function isAdmin(){
+        return $this->type === self::ADMIN_TYPE;
+    }
+
     public function events()
     {
         return $this->hasMany('App\Event')->orderBy('created_at', 'DESC');
