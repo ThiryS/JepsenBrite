@@ -42,5 +42,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+Route::get('/profile/{user}/futurevents', 'ProfilesController@futureEvents')->name('profile.future');
+Route::get('/profile/{user}/pastevents', 'ProfilesController@pastEvents')->name('profile.past');
 Route::put('profile/{user}', 'ProfilesController@update')->name('profile.update');
 Route::delete('/profile/{user}', 'ProfilesController@destroy')->name('profile.destroy');
