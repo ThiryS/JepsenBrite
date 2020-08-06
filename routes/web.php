@@ -48,6 +48,11 @@ Route::get('/profile/{user}/pastevents', 'ProfilesController@pastEvents')->name(
 Route::put('profile/{user}', 'ProfilesController@update')->name('profile.update');
 Route::delete('/profile/{user}', 'ProfilesController@destroy')->name('profile.destroy');
 
-Route::get('/admin', 'AdminController@admin')    
-    ->middleware('is_admin')    
-    ->name('admin');
+Route::get('/admin/eventboard', 'AdminController@adminEvents')->middleware('is_admin')->name('admin.event.show');
+Route::delete('/admin/eventboard/{id}', 'AdminController@destroyEvent')->middleware('is_admin')->name('admin.events.destroy');
+
+Route::get('/admin/enventboard/{id}/comments', 'AdminController@displayComments') -> middleware('is_admin') -> name('admin.comments.show');
+Route::delete('/admin/eventboard/{event_id}/commentdelete/{id}', 'AdminController@deleteComment') -> middleware('is_admin') -> name('admin.comment.destroy');
+
+Route::get('/admin/userboard', 'AdminController@adminUsers')->middleware('is_admin')->name('admin.users.show');
+Route::delete('/admin/userboard/{user}', 'AdminController@destroyUser')->middleware('is_admin')->name('admin.users.destroy');

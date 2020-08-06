@@ -70,6 +70,11 @@
                                     <a class="dropdown-item" href="{{ route('profile.show', Auth::user()->id) }}" onclick="">
                                         {{ __('Mon profil') }}
                                     </a>
+                                    @if (Auth::user() && Auth::user()-> type == 'admin')
+                                        <a class="dropdown-item" href="{{ route('admin.event.show')}}" onclick="">
+                                            {{ __('Admin') }}
+                                        </a>
+                                    @endif
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
