@@ -23,7 +23,7 @@
 
             <div>
                 <p>
-                <h3><a href="">{{ $event->name }}</a></h3> 
+                <h4><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></h4> 
                 </p> 
             </div>
 
@@ -37,23 +37,24 @@
                     <th scope="col">Date</th>
                     <th scope="col">Actions</th>
                 </tr>
-                @foreach ($event ->  comments -> sortBy('created_at') as $comment)
+                @foreach ($comments -> sortBy('created_at') as $comment)
                 <tr>
-                    <td><a href="../../../profile/{{ $comment->user_id }}">{{ $comment->user->name}}</a></td>
+                    <td><a href="../../../profile/{{ $comment->user_id }}">{{ $comment -> user ->name}}</a></td>
                     <td>{{ $comment-> comment}}</td>
                     <td>{{ $comment-> created_at}}</td>
                     <td>
-                    <form action="{{ route('admin.comment.destroy', [$comment-> event_id, $comment->id])}}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Supprimer</button>
+                        <a href="{{ route('admin.comment.edit', [$comment-> event_id, $comment->id]) }}" class="pr-4">Modifier</a>
+                        <form action="{{ route('admin.comment.destroy', [$comment-> event_id, $comment->id])}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="btn btn-danger" type="submit">Supprimer</button>
                         </form>
                     </td>
                 </tr>    
                 @endforeach
 
             </table>
-
+            {{ $comments->links() }}
         </div>
     </div>
 </div>

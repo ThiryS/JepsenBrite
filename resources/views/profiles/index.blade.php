@@ -43,7 +43,7 @@
                     <th scope="col">Date</th>
                     <th scope="col">Categorie</th>
                 </tr>
-                @foreach($user->events->sortBy('date') as $event)
+                @foreach($eventsCreated as $event)
                 @if ($event->date > now())
                 <tr>
                     <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
@@ -59,6 +59,7 @@
                 @endif
                 @endforeach
             </table>
+            {{ $eventsCreated->links() }}
         </div>
     </div>
     <br>
@@ -73,18 +74,17 @@
                     <th scope="col">Date</th>
                     <th scope="col">Catégorie</th>
                 </tr>
-                @foreach($user->participates->sortBy('date') as $participate)
-                @if ($participate->event->date > now())
+                @foreach($willParticipate as $participate)
                 <tr>
-                    <td><a
-                            href="{{ route('events.show', $participate->event->id) }}">{{ $participate->event->name }}</a>
+                    <td><a href="{{ route('events.show', $participate->event->id) }}">{{ $participate->event->name }}</a>
                     </td>
                     <td>{{ date('d-m-Y', strtotime($participate->event->date)) }}</td>
                     <td>{{ $participate->event->category }}</td>
                 </tr>
-                @endif
+                
                 @endforeach
             </table>
+            {{ $willParticipate->links() }}
         </div>
     </div>
     <br>
@@ -99,16 +99,16 @@
                     <th scope="col">Date</th>
                     <th scope="col">Catégorie</th>
                 </tr>
-                @foreach($user->participates->sortBy('date') as $participate)
-                @if ($participate->event->date < now()) <tr>
+                @foreach($hasParticipated as $participate)
+                <tr>
                     <td><a href="{{ route('events.show', $participate->event->id) }}">{{ $participate->event->name }}</a>
                     </td>
                     <td>{{ date('d-m-Y', strtotime($participate->event->date)) }}</td>
                     <td>{{ $participate->event->category }}</td>
-                    </tr>
-                    @endif
-                    @endforeach
+                </tr>
+                @endforeach
             </table>
+            {{ $hasParticipated->links() }}
         </div>
     </div>
 </div>

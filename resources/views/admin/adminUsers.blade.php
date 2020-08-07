@@ -37,6 +37,7 @@
                     <td>{{ $user-> email}}</td>
                     <td>{{ $user-> type}}</td>
                     <td>
+                        <a href="{{ route('admin.user.edit', $user->id) }}" class="pr-4">Modifier</a>
                         <form action="{{ route('admin.users.destroy', $user->id)}}" method="post">
                         @csrf
                         @method('DELETE')
