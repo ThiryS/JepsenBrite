@@ -17,12 +17,12 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->string('name');
             $table->foreignId('user_id');
+            $table->foreignId('category_id');
             $table->date('date');
             $table->float('lat')->nullable();
             $table->float('lng')->nullable();
             $table->text('description');
             $table->string('image')->nullable();
-            $table->string('category')->nullable();
             $table->timestamps();
         });
     }

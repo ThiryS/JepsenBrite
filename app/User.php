@@ -51,6 +51,9 @@ class User extends Authenticatable
 
         self::deleting(function($user) { // before delete() method call this
             $user->profile()->delete(); 
+            $user->participates()->each(function($participate) {
+                $participate->delete(); 
+             });
             $user->events()->each(function($event) {
                $event->delete(); 
             });

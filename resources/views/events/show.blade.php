@@ -21,6 +21,7 @@
                 <div class="card-body">
                 <a href="{{ route('participate.show', $event->id) }}">{{ $event->participates_count }} </a>participants
                   <img src=".{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
+                  @auth
                   <form action="{{ route('participate.create', $event->id)}}" method="post">
                       @csrf
                       @method('POST')
@@ -31,11 +32,12 @@
                       @method('DELETE')
                       <button class="btn btn-danger" type="submit">Ne plus participer</button>
                   </form>
+                  @endauth
                   <p><strong>Date:</strong> {{ date('d-m-Y', strtotime($event->date)) }}</p>
                   <p>
                   <strong>Description:</strong> @parsedown($event->description)
                   </p>
-                  <strong>Categorie:</strong> {{ $event->category }}
+                  <strong>Categorie:</strong> {{ $event->category->name }}
                 </div>
 
                 <div class="card-footer text-muted text-right">

@@ -56,12 +56,10 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Catégorie') }}</label>
 
                             <div class="col-md-6">
-                              <select id="category" class="@error('category') is-invalid @enderror" name="category">
-                                <option value="Concert">Concert</option>
-                                <option value="Exibition">Exposition</option>
-                                <option value="Conférence">Conférence</option>
-                                <option value="Salon">Salon</option>
-                                <option value="Spectacle">Spectacle</option>
+                              <select id="category_id" class="@error('category') is-invalid @enderror" name="category_id">
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
                               </select>
 
                                 @error('category')
@@ -71,6 +69,28 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Sous catégorie') }}</label>
+                            
+                            <div class="col-md-6">
+                                <select id="example-getting-started" multiple="multiple">
+                                    <option value="cheese">Cheese</option>
+                                    <option value="tomatoes">Tomatoes</option>
+                                    <option value="mozarella">Mozzarella</option>
+                                    <option value="mushrooms">Mushrooms</option>
+                                    <option value="pepperoni">Pepperoni</option>
+                                    <option value="onions">Onions</option>
+                                </select>
+                                <!-- Initialize the plugin: -->
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#example-getting-started').multiselect();
+    });
+</script>
+                            </div>
+                        </div>
+                        
 
                         <div class="form-group row">
                             <label for="image" class="col-md-4 col-form-label text-md-right">Profile image</label>
@@ -103,9 +123,9 @@
         </div>
     </div>
 </div>
-<!-- ** Don't forget to Add jQuery here ** -->
-<script src="lib/js/config.js"></script>
-<script src="lib/js/util.js"></script>
-<script src="lib/js/jquery.emojiarea.js"></script>
-<script src="lib/js/emoji-picker.js"></script>
+
+<!-- <script src="https://code.jquery.com/jquery-3.4.1.min;js"
+        integrity="sha256-C5XorXvZ"></script> -->
+<script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
 @endsection

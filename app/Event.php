@@ -14,7 +14,7 @@ class Event extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'image', 'date', 'lat', 'lng', 'category',
+        'name', 'description', 'image', 'date', 'lat', 'lng', 'category_id',
     ];
     /**
      * Get the user record associated with the event.
@@ -31,12 +31,23 @@ class Event extends Model
     {
         return $this->hasMany('App\Participate');
     }
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+    public function eventsubcat()
+    {
+        return $this->belongsToMany('App\Eventsubcat');
+    }
 
     public static function boot() {
         parent::boot();
         self::deleting(function($event) { // before delete() method call this
              $event->comments()->each(function($comment) {
                 $comment->delete(); // <-- direct deletion
+             });
+             $event->participates()->each(function($participate) {
+                $participate->delete(); 
              });
              // do the rest of the cleanup...
         });

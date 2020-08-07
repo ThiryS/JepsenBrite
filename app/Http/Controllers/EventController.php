@@ -9,6 +9,8 @@ use Intervention\Image\Facades\Image as Image;
 use Illuminate\Pagination\Paginator;
 use JD\Cloudder\Facades\Cloudder as Cloudder;
 use App\Participate;
+use App\Category;
+use App\Subcategory;
 use App\Event;
 use App\Comment;
 
@@ -26,7 +28,7 @@ class EventController extends Controller
              'name' => ['required', 'string', 'max:255'],
              'description' => ['required', 'string', 'max:2058'],
              'date' => ['required', 'date'],
-             'category' => ['required', 'string'],
+             'category_id' => ['required', 'string'],
              'image' => 'nullable'
          ]);
      }
@@ -61,7 +63,9 @@ class EventController extends Controller
 
     public function create()
     {
-        return view('events/create');
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        return view('events/create', ['categories' => $categories, 'subcategories' => $subcategories]);
     }
 
     /**
@@ -76,7 +80,7 @@ class EventController extends Controller
             'name' => 'required',
             'description' => 'required',
             'date' => 'required',
-            'category' => 'required',
+            'category_id' => 'required',
             'image' => ['nullable', 'image']
         ]);
 
@@ -94,17 +98,18 @@ class EventController extends Controller
             'name' => $data['name'],
             'description' => $data['description'],
             'date' => $data['date'],
-            'category' => $data['category'],
+            'category_id' => $data['category_id'],
             'image' => $imagePath
         ]);
 
-        return redirect('/events/'.$event->id)->with('success', 'Event créé!');
+        return \Redirect::route('events.index.wel')->with('success', 'Event créé!');
     }
 
     public function edit($id)
     {
         $event = Event::find($id);
-        return view('events.edit', ['event' => $event]);
+        $categories = Category::all();
+        return view('events.edit', ['event' => $event, 'categories' => $categories]);
     }
 
     public function update(Request $request, $id)
@@ -114,7 +119,7 @@ class EventController extends Controller
         $event->name =  $request->get('name');
         $event->description = $request->get('description');
         $event->date = $request->get('date');
-        $event->category = $request->get('category');
+        $event->category_id = $request->get('category_id');
 
 
         if(request('image') != null)

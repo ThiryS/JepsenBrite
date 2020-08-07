@@ -27,6 +27,7 @@ Route::get('/events', 'EventController@index')->name('events.index');
 Route::get('/events/{id}/edit', 'EventController@edit')->name('events.edit');
 Route::put('/events/{id}', 'EventController@update')->name('events.update');
 Route::delete('/events/{id}', 'EventController@destroy')->name('events.destroy');
+    
 
 Route::get('/events/create', 'EventController@create')->name('events.create');
 Route::get('/events/{id}', 'EventController@find')->name('events.show');
@@ -45,3 +46,8 @@ Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::put('profile/{user}', 'ProfilesController@update')->name('profile.update');
 Route::delete('/profile/{user}', 'ProfilesController@destroy')->name('profile.destroy');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

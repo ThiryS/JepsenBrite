@@ -26,6 +26,16 @@
     <script type="text/javascript" src="file/to/path/js/emojionearea.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emojione@4.0.0/lib/js/emojione.min.js"></script>
 
+        <!-- Include Twitter Bootstrap and jQuery: -->
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}" type="text/css"/>
+    <script type="text/javascript" src="{{ asset('js/jquery-2.1.3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap-3.3.2.min.js') }}"></script>
+    
+    <!-- Include the plugin's CSS and JS: -->
+    <script type="text/javascript" src="{{ asset('js/bootstrap-multiselect.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-multiselect.css') }}" type="text/css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
 <body>
     <div id="app">

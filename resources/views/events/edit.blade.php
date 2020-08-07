@@ -57,15 +57,13 @@
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Catégorie') }}</label>
 
                             <div class="col-md-6">
-                              <select id="category" class="@error('category') is-invalid @enderror" name="category" value="{{ $event->category }}">
-                                <option value="Concert">Concert</option>
-                                <option value="Exibition">Exibition</option>
-                                <option value="Conférence">Conférence</option>
-                                <option value="Salon">Salon</option>
-                                <option value="Spectacle">Spectacle</option>
+                              <select id="category_id" class="@error('category_id') is-invalid @enderror" name="category_id" value="{{ $event->category_id }}">
+                                @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endforeach
                               </select>
 
-                                @error('category')
+                                @error('category_id')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
