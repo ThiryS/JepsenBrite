@@ -13,4 +13,9 @@ class Category extends Model
     {
         return $this->hasMany('App\Event');
     }
+    public function subcategories()
+    {
+        return $this->hasMany('App\Subcategory');
+    }
+
 }

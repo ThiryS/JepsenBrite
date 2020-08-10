@@ -10,6 +10,7 @@ use Illuminate\Pagination\Paginator;
 use JD\Cloudder\Facades\Cloudder as Cloudder;
 use App\Participate;
 use App\Category;
+use App\Eventsubcat;
 use App\Subcategory;
 use App\Event;
 use App\Comment;
@@ -63,9 +64,9 @@ class EventController extends Controller
 
     public function create()
     {
-        $categories = Category::all();
-        $subcategories = Subcategory::all();
-        return view('events/create', ['categories' => $categories, 'subcategories' => $subcategories]);
+       
+        $categories = Category::with('subcategories')->get();
+        return view('events/create', ['categories' => $categories]);
     }
 
     /**
@@ -81,6 +82,7 @@ class EventController extends Controller
             'description' => 'required',
             'date' => 'required',
             'category_id' => 'required',
+            'subcategory_ids' => 'required',
             'image' => ['nullable', 'image']
         ]);
 
@@ -93,16 +95,24 @@ class EventController extends Controller
         }else{
             $imagePath = "./event.jpg";
         };
-
-        Auth::user()->events()->create([
+        $subcategoriesId = explode(',', $data["subcategory_ids"]);
+        
+        $thisEvent = Auth::user()->events()->create([
             'name' => $data['name'],
             'description' => $data['description'],
             'date' => $data['date'],
             'category_id' => $data['category_id'],
             'image' => $imagePath
         ]);
+        foreach ($subcategoriesId as $subcategoryId => $value) {
+            $eventsubcat = new Eventsubcat;
+            $eventsubcat->subcategory()->associate($value);
+            $eventsubcat->event()->associate($thisEvent);
+            $eventsubcat->save();
 
-        return \Redirect::route('events.index.wel')->with('success', 'Event créé!');
+        }
+
+        return \Redirect::route('events.show', $thisEvent->id)->with('success', 'Event créé!');
     }
 
     public function edit($id)

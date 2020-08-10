@@ -13,9 +13,9 @@ class CreateEventsubcatTable extends Migration
      */
     public function up()
     {
-        Schema::create('eventsubcat', function (Blueprint $table) {
+        Schema::create('eventsubcats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('category_id');
+            $table->foreignId('subcategory_id');
             $table->foreignId('event_id');
             $table->timestamp('created_at')->nullable();
             $table->timestamp('updated_at')->nullable();
@@ -29,6 +29,6 @@ class CreateEventsubcatTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('eventsubcat');
+        Schema::dropIfExists('eventsubcats');
     }
 }

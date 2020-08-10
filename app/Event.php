@@ -35,9 +35,9 @@ class Event extends Model
     {
         return $this->belongsTo('App\Category');
     }
-    public function eventsubcat()
+    public function eventsubcats()
     {
-        return $this->belongsToMany('App\Eventsubcat');
+        return $this->hasMany('App\Eventsubcat');
     }
 
     public static function boot() {

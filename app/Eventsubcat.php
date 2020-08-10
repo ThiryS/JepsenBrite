@@ -8,7 +8,7 @@ class Eventsubcat extends Model
 {
     public function subcategory()
     {
-        return $this->belongsTo('App\Subcatecory');
+        return $this->belongsTo('App\Subcategory');
     }
     public function event()
     {

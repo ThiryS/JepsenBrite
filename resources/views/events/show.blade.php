@@ -19,7 +19,7 @@
               </div>
 
                 <div class="card-body">
-                <a href="{{ route('participate.show', $event->id) }}">{{ $event->participates_count }} </a>participants
+                <a href="{{ route('participate.show', $event->id) }}">{{ $event->participates_count }} </a>participant(s)
                   <img src=".{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
                   @auth
                   <form action="{{ route('participate.create', $event->id)}}" method="post">
@@ -37,7 +37,12 @@
                   <p>
                   <strong>Description:</strong> @parsedown($event->description)
                   </p>
-                  <strong>Categorie:</strong> {{ $event->category->name }}
+                  <p><strong>Categorie:</strong> {{ $event->category->name }}</p>
+                  <p><strong>Sous categorie(s):</strong> 
+                  @foreach ($event->eventsubcats as $subcat)
+                    {{  $subcat->subcategory->name  }}
+                  @endforeach
+                  </p>
                 </div>
 
                 <div class="card-footer text-muted text-right">
