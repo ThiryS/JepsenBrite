@@ -19,7 +19,19 @@ class ProfilesController extends Controller
     */
    public function index(User $user)
    {
-        return view('profiles/index', ['user' => $user]);
+       
+       $eventsCreated = Event::where('user_id', $user->id)-> orderBy('date','DESC')-> paginate(10, ['*'], 'eCreated');
+
+       $willParticipate = Participate::where('user_id', $user->id)-> whereHas('event', function ($query){
+           $query ->where('date', '>', now());
+       } ) -> paginate(10, ['*'], 'wParticipate');
+
+       $hasParticipated= Participate::where('user_id', $user->id)-> whereHas('event', function ($query){
+        $query ->where('date', '<', now()) -> orderBy('date', 'DESC') ;
+        } ) -> paginate(10, ['*'], 'hParticipated');
+
+
+        return view('profiles/index', ['user' => $user, 'eventsCreated' => $eventsCreated, 'willParticipate' => $willParticipate, 'hasParticipated' =>$hasParticipated]);
    }
 
    /**

@@ -44,10 +44,24 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
+Route::get('/profile/{user}/futurevents', 'ProfilesController@futureEvents')->name('profile.future');
+Route::get('/profile/{user}/pastevents', 'ProfilesController@pastEvents')->name('profile.past');
 Route::put('profile/{user}', 'ProfilesController@update')->name('profile.update');
 Route::delete('/profile/{user}', 'ProfilesController@destroy')->name('profile.destroy');
 
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/eventboard', 'AdminController@adminEvents')->middleware('is_admin')->name('admin.event.show');
+Route::get('/admin/eventboard/{id}/edit', 'AdminController@adminEventEdit')->middleware('is_admin')->name('admin.event.edit');
+Route::put('/admin/eventboard/{id}/update', 'AdminController@adminEventUpdate')->middleware('is_admin')->name('admin.event.update');
+Route::delete('/admin/eventboard/{id}', 'AdminController@destroyEvent')->middleware('is_admin')->name('admin.events.destroy');
+
+Route::get('/admin/enventboard/{id}/comments', 'AdminController@displayComments') -> middleware('is_admin') -> name('admin.comments.show');
+Route::get('/admin/enventboard/{event_id}/comments/{id}/edit', 'AdminController@adminCommentEdit') -> middleware('is_admin') -> name('admin.comment.edit');
+Route::put('/admin/enventboard/{event_id}/comments/{id}/update', 'AdminController@adminCommentUpdate') -> middleware('is_admin') -> name('admin.comment.update');
+Route::delete('/admin/eventboard/{event_id}/commentdelete/{id}', 'AdminController@deleteComment') -> middleware('is_admin') -> name('admin.comment.destroy');
+
+Route::get('/admin/userboard', 'AdminController@adminUsers')->middleware('is_admin')->name('admin.users.show');
+Route::get('/admin/userboard/{id}/edit', 'AdminController@adminUserEdit')->middleware('is_admin')->name('admin.user.edit');
+Route::put('/admin/userboard/{id}/update', 'AdminController@adminUserUpdate')->middleware('is_admin')->name('admin.user.update');
+Route::delete('/admin/userboard/{user}', 'AdminController@destroyUser')->middleware('is_admin')->name('admin.users.destroy');
