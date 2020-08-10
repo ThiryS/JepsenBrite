@@ -60,5 +60,32 @@ class CommentsController extends Controller
        $comment->save();
 
        return $comment;
-   }
+    }
+    
+    public function CommentEdit($event_id, $id)
+    {
+        // $this->authorize('update', $user->profile);
+        $event= Event::find($event_id);
+        $comment = Comment::find($id);
+        return view('admin/adminCommentEdit', ['event' => $event, 'comment' => $comment]);
+    }
+
+    public function adminCommentUpdate(REQUEST $request, $event_id, $id)
+    {
+        $data = $this->validator($request->all())->validate();
+        $comment = Comment::find($id);
+        $comment -> comment = $request -> get('comment');
+        $comment()->update(['comment' => $data['comment']]);
+
+        return \Redirect::route('admin.comments.show', $event_id)->with('success', 'Commentaire modifié!');
+    }
+
+    public function deleteComment($event_id, $id)
+    {
+        $comment = Comment::find($id); 
+
+        $comment->delete();
+
+        return \Redirect::route('admin.comments.show', $event_id)->with('success', 'commentaire supprimé!');
+    }
 }
