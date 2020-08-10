@@ -48,13 +48,13 @@
                 <tr>
                     <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
                     <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
-                    <td>{{ $event->category }}</td>
+                    <td>{{ $event->category -> name }}</td>
                 </tr>
                 @else
                 <tr class="table-secondary">
                     <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
                     <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
-                    <td>{{ $event->category }}</td>
+                    <td>{{ $event->category -> name }}</td>
                 </tr>
                 @endif
                 @endforeach
@@ -79,7 +79,7 @@
                     <td><a href="{{ route('events.show', $participate->event->id) }}">{{ $participate->event->name }}</a>
                     </td>
                     <td>{{ date('d-m-Y', strtotime($participate->event->date)) }}</td>
-                    <td>{{ $participate->event->category }}</td>
+                    <td>{{ $participate->event->category -> name }}</td>
                 </tr>
                 
                 @endforeach
@@ -104,7 +104,7 @@
                     <td><a href="{{ route('events.show', $participate->event->id) }}">{{ $participate->event->name }}</a>
                     </td>
                     <td>{{ date('d-m-Y', strtotime($participate->event->date)) }}</td>
-                    <td>{{ $participate->event->category }}</td>
+                    <td>{{ $participate->event->category -> name }}</td>
                 </tr>
                 @endforeach
             </table>
