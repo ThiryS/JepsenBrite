@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
+use App\User;
 class CreateProfilesTable extends Migration
 {
     /**
@@ -19,9 +19,10 @@ class CreateProfilesTable extends Migration
             $table->string('name')->unique();
             $table->string('image')->nullable();
             $table->timestamps();
-
+            
             $table->index('user_id');
         });
+        User::create(['name' => 'admin', 'email' => 'admin@admin.com', 'password' => Hash::make('admin'), 'type' => 'admin']);
     }
 
     /**
