@@ -94,6 +94,15 @@
                                 </span>
                             @enderror
                         </div>
+                        <div class="col-md-6">
+                                <input id="video" type="url" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ $event->video }}" required autocomplete="name" autofocus>
+
+                                @error('video')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
