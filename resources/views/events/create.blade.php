@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="image" class="col-md-4 col-form-label text-md-right">Profile image</label>
+                            <label for="image" class="col-md-4 col-form-label text-md-right">Image</label>
 
                             <div class="col-md-6">
                                 <input id="form-control-file" type="file" name="image" class="@error('image') is-invalid @enderror">
