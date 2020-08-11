@@ -19,12 +19,7 @@
 
     <!-- Styles -->
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="lib/css/emoji.css" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="file/to/path/css/emojionearea.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emojione@4.0.0/extras/css/emojione.min.css"/>
-    <script type="text/javascript" src="file/to/path/js/emojionearea.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/emojione@4.0.0/lib/js/emojione.min.js"></script>
 </head>
 <body>
     <div id="app">
