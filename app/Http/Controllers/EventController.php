@@ -83,7 +83,8 @@ class EventController extends Controller
             'date' => 'required',
             'category_id' => 'required',
             'subcategory_ids' => 'required',
-            'image' => ['nullable', 'image']
+            'image' => ['nullable', 'image'],
+            'video' => 'nullable'
         ]);
 
         if(request('image') != null)
@@ -96,12 +97,25 @@ class EventController extends Controller
             $imagePath = "./event.jpg";
         };
         $subcategoriesId = explode(',', $data["subcategory_ids"]);
-        
+
+        $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+        $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
+    
+        if (preg_match($longUrlRegex, $data['video'], $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+    
+        if (preg_match($shortUrlRegex, $data['video'], $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+        $data['video'] = 'https://www.youtube.com/embed/' . $youtube_id ;
+
         $thisEvent = Auth::user()->events()->create([
             'name' => $data['name'],
             'description' => $data['description'],
             'date' => $data['date'],
             'category_id' => $data['category_id'],
+            'video' => $data['video'],
             'image' => $imagePath
         ]);
         foreach ($subcategoriesId as $subcategoryId => $value) {
@@ -130,6 +144,7 @@ class EventController extends Controller
         $event->description = $request->get('description');
         $event->date = $request->get('date');
         $event->category_id = $request->get('category_id');
+        $event->category_id = $request->get('video');
 
 
         if(request('image') != null)
@@ -157,4 +172,6 @@ class EventController extends Controller
 
         return \Redirect::route('events.index')->with('success', 'Event supprimé!');
     }
+
+    
 }
