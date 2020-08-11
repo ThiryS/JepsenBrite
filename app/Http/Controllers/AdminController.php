@@ -9,6 +9,7 @@ use App\Comment;
 use Illuminate\Support\Facades\Validator;
 use Intervention\Image\Facades\Image as Image;
 use JD\Cloudder\Facades\Cloudder as Cloudder;
+use App\Category;
 
 class AdminController extends Controller
 {
@@ -26,7 +27,8 @@ class AdminController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:2058'],
             'date' => ['required', 'date'],
-            'category' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'category_id' => ['required', 'string'],
             'image' => 'nullable'
         ]);
     }
@@ -50,7 +52,8 @@ class AdminController extends Controller
     public function adminEventEdit($id)
     {
         $event = Event::find($id);
-        return view('admin/adminEventEdit', ['event' => $event]);
+        $categories = Category::all();
+        return view('admin/adminEventEdit', ['event' => $event, 'categories' => $categories]);
     }
 
     public function adminEventUpdate(Request $request, $id)
@@ -60,7 +63,8 @@ class AdminController extends Controller
         $event->name =  $request->get('name');
         $event->description = $request->get('description');
         $event->date = $request->get('date');
-        $event->category = $request->get('category');
+        $event->address = $request->get('address');
+        $event->category_id = $request->get('category_id');
 
 
         if(request('image') != null)
