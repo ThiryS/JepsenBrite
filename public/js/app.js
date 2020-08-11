@@ -66720,12 +66720,25 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 var Example = function Example(props) {
   var categories = JSON.parse(props.categories);
+  var passedcategory = props.selectedcategory === null ? categories[0].id : props.selectedcategory;
+  var passedsubcategories = props.selectedsubcategories === null ? [] : JSON.parse(props.selectedsubcategories).map(function (item) {
+    return {
+      value: item.id,
+      label: item.name
+    };
+  });
 
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(categories[0].id),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(passedcategory),
       _useState2 = _slicedToArray(_useState, 2),
       selectedCategory = _useState2[0],
       setSelectedCategory = _useState2[1];
 
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])(passedsubcategories),
+      _useState4 = _slicedToArray(_useState3, 2),
+      selected = _useState4[0],
+      setSelected = _useState4[1];
+
+  console.log(selected);
   var options = categories.find(function (item) {
     return item.id === Number(selectedCategory);
   }).subcategories.map(function (item) {
@@ -66735,12 +66748,8 @@ var Example = function Example(props) {
     };
   });
 
-  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_1__["useState"])([]),
-      _useState4 = _slicedToArray(_useState3, 2),
-      selected = _useState4[0],
-      setSelected = _useState4[1];
-
   var handleChange = function handleChange(e) {
+    setSelected([]);
     setSelectedCategory(e.target.value);
   };
 
@@ -66778,6 +66787,10 @@ var Example = function Example(props) {
   }))));
 };
 
+Example.defaultProps = {
+  selectedcategory: null,
+  selectedsubcategories: null
+};
 /* harmony default export */ __webpack_exports__["default"] = (Example);
 
 if (document.getElementById("multiselect")) {

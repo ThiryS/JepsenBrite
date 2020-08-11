@@ -132,8 +132,12 @@ class EventController extends Controller
     public function edit($id)
     {
         $event = Event::find($id);
-        $categories = Category::all();
-        return view('events.edit', ['event' => $event, 'categories' => $categories]);
+        $categories = Category::with('subcategories')->get();
+        $subcats = array();
+        foreach ($event->eventsubcats as $sub){
+         array_push($subcats,$sub->subcategory);
+        }
+        return view('events.edit', ['event' => $event, 'categories' => $categories, 'subcats' => $subcats]);
     }
 
     public function update(Request $request, $id)
