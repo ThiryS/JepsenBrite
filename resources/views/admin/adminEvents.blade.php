@@ -30,7 +30,7 @@
                     <th scope="col">Nom</th>
                     <th scope="col">Créateur</th>
                     <th scope="col">Date</th>
-                    <th scope="col">Categorie</th>
+                    <th scope="col">Adresse</th>
                     <th scope="col">Actions</th>
                 </tr>
                 @foreach ($events->sortBy('date') as $event)
@@ -38,7 +38,7 @@
                     <td><a href="{{ route('admin.comments.show', $event->id) }}">{{ $event->name }}</a></td>
                     <td><a href="../profile/{{ $event->user->id }}">{{ $event->user->name}}</a></td>
                     <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
-                    <td>{{ $event->category -> name }}</td>
+                    <td>{{ $event->address }}</td>
                     <td>
                         <a href="{{ route('admin.event.edit', $event->id) }}" class="pr-4">Modifier</a>
                         <form action="{{ route('admin.events.destroy', $event->id)}}" method="post">
