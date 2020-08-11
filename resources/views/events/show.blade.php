@@ -30,6 +30,7 @@
                     @else
                     <img src="{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
                 @endif
+                @endif
                     @auth
                     <form action="{{ route('participate.create', $event->id)}}" method="post">
                         @csrf
