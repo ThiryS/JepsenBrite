@@ -80,24 +80,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="email"
-                                class="col-md-4 col-form-label text-md-right">{{ __('Catégorie') }}</label>
-
-                            <div class="col-md-6">
-                                <select id="category_id" class="@error('category_id') is-invalid @enderror"
-                                    name="category_id" value="{{ $event->category_id }}">
-                                    @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                    @endforeach
-                                </select>
-
-                                @error('category_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
+                        <div id="multiselect" data-selectedsubcategories="{{ json_encode($subcats)}}" data-selectedcategory="{{ $event->category->id }}" data-categories="{{ $categories }}">
                         </div>
 
                         <div class="form-group row">
@@ -118,7 +101,10 @@
                             </span>
                             @enderror
                         </div>
-                        <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="video" class="col-md-4 col-form-label text-md-right">{{ __('Video') }}</label>
+
+                            <div class="col-md-6">
                                 <input id="video" type="url" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ $event->video }}" required autocomplete="name" autofocus>
 
                                 @error('video')
@@ -127,6 +113,7 @@
                                     </span>
                                 @enderror
                             </div>
+                        </div>
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">

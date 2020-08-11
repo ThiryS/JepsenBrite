@@ -152,8 +152,37 @@ class EventController extends Controller
         $event->date = $request->get('date');
         $event->address = $request->get('address');
         $event->category_id = $request->get('category_id');
-        $event->category_id = $request->get('video');
 
+        $newurl = $request->get('video');
+        $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+        $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
+    
+        if (preg_match($longUrlRegex, $newurl, $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+    
+        if (preg_match($shortUrlRegex, $newurl, $matches)) {
+            $youtube_id = $matches[count($matches) - 1];
+        }
+        $newurl = 'https://www.youtube.com/embed/' . $youtube_id ;
+
+        $event->video = $newurl;
+
+
+        $subcategoriesId = explode(',', $request->get('subcategory_ids'));
+
+        foreach ($event->eventsubcats as $eventsubcats) {
+            $eventsubcats->delete();
+
+        }
+
+        foreach ($subcategoriesId as $subcategoryId => $value) {
+            $eventsubcat = new Eventsubcat;
+            $eventsubcat->subcategory()->associate($value);
+            $eventsubcat->event()->associate($event);
+            $eventsubcat->save();
+
+        }
 
         if(request('image') != null)
          {
