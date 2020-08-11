@@ -22,12 +22,10 @@
                 <div class="card-body">
                     <a href="{{ route('participate.show', $event->id) }}">{{ $event->participates_count }}
                     </a>participant(s)
-                    @if ($event->video =! NULL)
-                <iframe src="{{ $event->video }}" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
-                    @elseif ($event->image == "./event.jpg")
-                     <img src=".{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
+                    @if ($event->video == NULL)
+                  <img src="{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
                     @else
-                    <img src="{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
+                <iframe src="{{ $event->video }}" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
                 @endif
                     @auth
                     <form action="{{ route('participate.create', $event->id)}}" method="post">
