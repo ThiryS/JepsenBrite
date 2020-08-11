@@ -52,6 +52,20 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Adresse') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="address" data-emojiable="true" type="text" class="form-control @error('name') is-invalid @enderror" name="address" value="{{ old('address') }}" placeholder="rue n°, ville" required autocomplete="name" autofocus>
+
+                                @error('address')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div id="multiselect" data-categories="{{ $categories }}">
                         </div>
 

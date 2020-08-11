@@ -29,6 +29,7 @@ class EventController extends Controller
              'name' => ['required', 'string', 'max:255'],
              'description' => ['required', 'string', 'max:2058'],
              'date' => ['required', 'date'],
+             'address' => ['required', 'string'],
              'category_id' => ['required', 'string'],
              'image' => 'nullable'
          ]);
@@ -81,6 +82,7 @@ class EventController extends Controller
             'name' => 'required',
             'description' => 'required',
             'date' => 'required',
+            'address' => 'required',
             'category_id' => 'required',
             'subcategory_ids' => 'required',
             'image' => ['nullable', 'image']
@@ -101,6 +103,7 @@ class EventController extends Controller
             'name' => $data['name'],
             'description' => $data['description'],
             'date' => $data['date'],
+            'address' => $data['address'],
             'category_id' => $data['category_id'],
             'image' => $imagePath
         ]);
@@ -129,6 +132,7 @@ class EventController extends Controller
         $event->name =  $request->get('name');
         $event->description = $request->get('description');
         $event->date = $request->get('date');
+        $event->address = $request->get('address');
         $event->category_id = $request->get('category_id');
 
 
