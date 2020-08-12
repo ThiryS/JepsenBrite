@@ -9,7 +9,9 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Modifier un événement') }}</div>
+                <div class="card-header d-flex justify-content-between align-items-baseline">{{ __('Modifier un événement') }}
+                    <a href="{{ route('admin.comments.show', $event->id) }}">Modifier les commentaires</a>
+                </div>
 
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data"
