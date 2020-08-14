@@ -74,7 +74,7 @@
                             {{$comment->updated_at}}
                         </p>
                         
-                        @if($event->user == Auth::user())
+                        @if($comment->user == Auth::user())
                         <p>
                             <a href="{{ route('comment.edit', [$comment-> event_id, $comment->id]) }}"
                                 class="pr-4">Modifier</a>

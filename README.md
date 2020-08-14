@@ -74,7 +74,7 @@ First part ran from july 20th to july 31st. Second part Ran from augustus 3rd to
 
 
 ## Github repository
-https://github.com/ldolne/jepsen-brite
+https://github.com/ThiryS/JepsenBrite
 
 
 ## deployed example
