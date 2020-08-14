@@ -21,15 +21,6 @@
         <div class="card-header d-flex justify-content-between align-items-baseline pt-4">
             <h4>
                 Evéenements créés
-                <!-- <div>
-
-                    <a name="options" id="ownEvents" class="btn btn-primary" href="{{ route('profile.show', Auth::user()->id) }}"> Evénements créés </a>
-
-                    <a name="options" id="futureEvents" class="btn btn-primary" href="{{ route('home')}}"> Participe </a>
-
-                    <a name="options" id="pastEvents" class="btn btn-primary" href="{{ route('home')}}"> A participé </a>
-
-                </div> -->
             </h4>
             @can('update', $user->profile)
             <a class="btn btn-primary" href="{{ route('events.create') }}">Créer un nouvel événement</a>
