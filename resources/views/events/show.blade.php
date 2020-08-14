@@ -79,7 +79,7 @@
                                 method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" type="submit"><i class="far fa-trash-alt"></i></button>
+                                <button class="btn btn-primary" type="submit"><i class="far fa-trash-alt"></i></button>
                             </form>
                         </div>
                         @endif
