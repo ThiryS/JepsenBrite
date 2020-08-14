@@ -30,27 +30,27 @@ class CreateSubcategoriesTable extends Migration
         $subcategories2 = ['Sculpture', 'Peinture', 'Vestimentaire', 'Autre'];
         foreach ($subcategories2 as $subcategory2) 
         {
-            DB::table('subcategories')->insert(['name' => $subcategory2, 'category_id' => 2]);
+            DB::table('subcategories')->insert(['name' => $subcategory2, 'category_id' => 11]);
         }
         $subcategories3 = ['Scientifique ', 'Médicale', 'Philosophique', 'Politique', 'Autre'];
         foreach ($subcategories3 as $subcategory3) 
         {
-            DB::table('subcategories')->insert(['name' => $subcategory3, 'category_id' => 3]);
+            DB::table('subcategories')->insert(['name' => $subcategory3, 'category_id' => 21]);
         }
         $subcategories4 = ['Batiment ', 'Tourisme', 'Auto-Moto', 'Aéronautique', 'Autre'];
         foreach ($subcategories4 as $subcategory4) 
         {
-            DB::table('subcategories')->insert(['name' => $subcategory4, 'category_id' => 4]);
+            DB::table('subcategories')->insert(['name' => $subcategory4, 'category_id' => 31]);
         }
         $subcategories5 = ['Dance ', 'Chant', 'Théatre', 'Comédie', 'Tragédie' , 'Autre'];
         foreach ($subcategories5 as $subcategory5) 
         {
-            DB::table('subcategories')->insert(['name' => $subcategory5, 'category_id' => 5]);
+            DB::table('subcategories')->insert(['name' => $subcategory5, 'category_id' => 41]);
         }
         $subcategories6 = ['Dansante ', 'Privée', 'Publique', 'Anniversaire', 'Bar Mitzvah' , 'Autre'];
         foreach ($subcategories6 as $subcategory6) 
         {
-            DB::table('subcategories')->insert(['name' => $subcategory6, 'category_id' => 6]);
+            DB::table('subcategories')->insert(['name' => $subcategory6, 'category_id' => 51]);
         }
     }
 

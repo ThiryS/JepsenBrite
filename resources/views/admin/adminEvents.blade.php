@@ -35,12 +35,13 @@
                 </tr>
                 @foreach ($events->sortBy('date') as $event)
                 <tr>
-                    <td><a href="{{ route('admin.comments.show', $event->id) }}">{{ $event->name }}</a></td>
+                    <td><a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a></td>
                     <td><a href="../profile/{{ $event->user->id }}">{{ $event->user->name}}</a></td>
                     <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
                     <td>{{ $event->address }}</td>
                     <td>
                         <a href="{{ route('admin.event.edit', $event->id) }}" class="pr-4">Modifier</a>
+                        <a href="{{ route('admin.comments.show', $event->id) }}">Modifier les commentaires</a>
                         <form action="{{ route('admin.events.destroy', $event->id)}}" method="post">
                         @csrf
                         @method('DELETE')

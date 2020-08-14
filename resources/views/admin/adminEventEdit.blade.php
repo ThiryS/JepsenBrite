@@ -9,7 +9,8 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Modifier un événement') }}</div>
+                <div class="card-header ">{{ __('Modifier un événement') }}
+                </div>
 
                 <div class="card-body">
                     <form method="post" enctype="multipart/form-data"
@@ -84,7 +85,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="image" class="col-md-4 col-form-label text-md-right">Profile image</label>
+                            <label for="image" class="col-md-4 col-form-label text-md-right">Image</label>
 
                             <div class="col-md-6">
                                 <input id="form-control-file" type="file" name="image"
@@ -105,7 +106,7 @@
                             <label for="video" class="col-md-4 col-form-label text-md-right">{{ __('Video') }}</label>
 
                             <div class="col-md-6">
-                                <input id="video" type="url" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ $event->video }}" required autocomplete="name" autofocus>
+                                <input id="video" type="url" class="form-control @error('video') is-invalid @enderror" name="video" value="{{ $event->video }}" autocomplete="name" autofocus>
 
                                 @error('video')
                                     <span class="invalid-feedback" role="alert">

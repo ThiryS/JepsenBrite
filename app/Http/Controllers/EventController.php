@@ -100,17 +100,21 @@ class EventController extends Controller
         };
         $subcategoriesId = explode(',', $data["subcategory_ids"]);
 
-        $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
-        $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
-    
-        if (preg_match($longUrlRegex, $data['video'], $matches)) {
-            $youtube_id = $matches[count($matches) - 1];
+        if ($data['video'] != NULL) {
+            $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+            $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
+        
+            if (preg_match($longUrlRegex, $data['video'], $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+        
+            if (preg_match($shortUrlRegex, $data['video'], $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+            $data['video'] = 'https://www.youtube.com/embed/' . $youtube_id ;
         }
-    
-        if (preg_match($shortUrlRegex, $data['video'], $matches)) {
-            $youtube_id = $matches[count($matches) - 1];
-        }
-        $data['video'] = 'https://www.youtube.com/embed/' . $youtube_id ;
+
+        
 
         $thisEvent = Auth::user()->events()->create([
             'name' => $data['name'],
@@ -152,21 +156,24 @@ class EventController extends Controller
         $event->date = $request->get('date');
         $event->address = $request->get('address');
         $event->category_id = $request->get('category_id');
-
         $newurl = $request->get('video');
-        $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
-        $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
-    
-        if (preg_match($longUrlRegex, $newurl, $matches)) {
-            $youtube_id = $matches[count($matches) - 1];
-        }
-    
-        if (preg_match($shortUrlRegex, $newurl, $matches)) {
-            $youtube_id = $matches[count($matches) - 1];
-        }
-        $newurl = 'https://www.youtube.com/embed/' . $youtube_id ;
+        if ($newurl != NULL) {
+            # $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+            $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
+        
+            if (preg_match($longUrlRegex, $newurl, $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+        
+            if (preg_match($shortUrlRegex, $newurl, $matches)) {
+                $youtube_id = $matches[count($matches) - 1];
+            }
+            $newurl = 'https://www.youtube.com/embed/' . $youtube_id ;
 
-        $event->video = $newurl;
+            $event->video = $newurl;
+        }
+        
+       
 
 
         $subcategoriesId = explode(',', $request->get('subcategory_ids'));
