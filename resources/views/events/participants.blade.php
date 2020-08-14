@@ -5,7 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header d-flex justify-content-between align-items-baseline"><h4>Participants à {{ $event->name }}</h4>
+                <div class="card-header d-flex justify-content-between align-items-baseline"><h4>Participants</h4>
+                <div>
+                <a href="{{ route('events.show', $event->id) }}">{{ $event->name }}</a>
+                </div>
               </div>
 
                 <div class="card-body">
