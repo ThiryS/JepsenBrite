@@ -72,20 +72,21 @@
                         <p class="text-muted text-right">de: <a
                                 href="../profile/{{ $comment->user->id }}">{{ $comment->user->name}}</a> posté:
                             {{$comment->updated_at}}
+                            @if($comment->user == Auth::user())
+                            <p class="d-flex justify-content-between align-items-baseline">
+                                <a href="{{ route('comment.edit', [$comment-> event_id, $comment->id]) }}"
+                                    class="btn btn-primary"><i class="fas fa-edit"></i></a>
+                                <form action="{{ route('comment.destroy', [$comment-> event_id, $comment->id])}}"
+                                    method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit"><i class="far fa-trash-alt"></i></button>
+                                </form>
+                            </p>
+                                @endif
                         </p>
                         
-                        @if($comment->user == Auth::user())
-                        <p>
-                            <a href="{{ route('comment.edit', [$comment-> event_id, $comment->id]) }}"
-                                class="btn btn-primary pr-4"><i class="fas fa-edit"></i></a>
-                            <form action="{{ route('comment.destroy', [$comment-> event_id, $comment->id])}}"
-                                method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger" type="submit"><i class="far fa-trash-alt"></i></button>
-                            </form>
-                        </p>
-                        @endif
+                        
                     </li>
                     @endforeach
             </div>
