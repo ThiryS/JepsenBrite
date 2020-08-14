@@ -77,12 +77,12 @@
                         @if($comment->user == Auth::user())
                         <p>
                             <a href="{{ route('comment.edit', [$comment-> event_id, $comment->id]) }}"
-                                class="pr-4">Modifier</a>
+                                class="pr-4"><i class="fas fa-edit"></i></a>
                             <form action="{{ route('comment.destroy', [$comment-> event_id, $comment->id])}}"
                                 method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Supprimer</button>
+                                <button class="btn btn-danger" type="submit"><i class="far fa-trash-alt"></i></button>
                             </form>
                         </p>
                         @endif
@@ -123,10 +123,5 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-    $(document).ready(function () {
-        $("#comment").emojioneArea();
-    });
 
-</script>
 @endsection
