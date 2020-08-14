@@ -158,7 +158,7 @@ class EventController extends Controller
         $event->category_id = $request->get('category_id');
         $newurl = $request->get('video');
         if ($newurl != NULL) {
-            # $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
+            $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_]+)\??/i';
             $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))(\w+)/i';
         
             if (preg_match($longUrlRegex, $newurl, $matches)) {
