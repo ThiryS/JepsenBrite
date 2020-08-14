@@ -25,9 +25,10 @@
                     @if ($event->video == NULL)
                     @if ($event->image == "./event.jpg")
                     <img src=".{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
-                    @endif
-                  <img src="{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
                     @else
+                  <img src="{{ $event->image }}" style="height: 300px; width: 100%; object-fit: cover;" class="pb-3">
+                   @endif
+                   @else
                 <iframe src="{{ $event->video }}" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
                 @endif
                     @auth

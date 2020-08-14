@@ -106,7 +106,7 @@
 
 
                         <div class="card-body" >
-                          <div class="row card-deck">
+                          <div class="row ">
                             @foreach ($events as $event)
 
                                     @if ($event == $loop->first)
@@ -134,7 +134,7 @@
                                         </div>
 
                                     @endif
-
+                                    <div class="card-deck">
                                     @if($event != $loop->first)
                                         <div class="card col-sm-4" style="margin-bottom: 1em;">
 
@@ -160,6 +160,7 @@
                                         </div>
                                         </div>
                                 @endif
+                                </div>
                               @endforeach
                             </div>
                           {{ $events->links() }}
