@@ -22,7 +22,8 @@
         "mervick/emojionearea": "^3.0.0",
         "nesbot/carbon": "^2.36",
         "parsedown/laravel": "^1.2",
-        "spatie/emoji": "^2.1"
+        "spatie/emoji": "^2.1",
+        "spatie/geocoder": "^3.9"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

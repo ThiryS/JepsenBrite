@@ -34,6 +34,10 @@ Route::get('/events/{id}', 'EventController@find')->name('events.show');
 Route::post('/events', 'EventController@store')->name('events.store');
 
 Route::post('/events/{id}/comments', 'CommentsController@create')->name('comments.create');
+Route::get('/events/{event_id}/comments/{id}/edit', 'CommentsController@commentEdit') -> name('comment.edit');
+Route::put('/events/{event_id}/comments/{id}/update', 'CommentsController@commentUpdate') -> name('comment.update');
+Route::delete('/events/{event_id}/commentdelete/{id}', 'CommentsController@deleteComment') -> name('comment.destroy');
+
 Route::post('/events/{id}/participates', 'ParticipateController@create')->name('participate.create');
 Route::get('/events/{id}/participants', 'ParticipateController@show')->name('participate.show');
 Route::delete('/events/{id}/participates', 'ParticipateController@destroy')->name('participate.destroy');
@@ -56,9 +60,9 @@ Route::get('/admin/eventboard/{id}/edit', 'AdminController@adminEventEdit')->mid
 Route::put('/admin/eventboard/{id}/update', 'AdminController@adminEventUpdate')->middleware('is_admin')->name('admin.event.update');
 Route::delete('/admin/eventboard/{id}', 'AdminController@destroyEvent')->middleware('is_admin')->name('admin.events.destroy');
 
-Route::get('/admin/enventboard/{id}/comments', 'AdminController@displayComments') -> middleware('is_admin') -> name('admin.comments.show');
-Route::get('/admin/enventboard/{event_id}/comments/{id}/edit', 'AdminController@adminCommentEdit') -> middleware('is_admin') -> name('admin.comment.edit');
-Route::put('/admin/enventboard/{event_id}/comments/{id}/update', 'AdminController@adminCommentUpdate') -> middleware('is_admin') -> name('admin.comment.update');
+Route::get('/admin/eventboard/{id}/comments', 'AdminController@displayComments') -> middleware('is_admin') -> name('admin.comments.show');
+Route::get('/admin/eventboard/{event_id}/comments/{id}/edit', 'AdminController@adminCommentEdit') -> middleware('is_admin') -> name('admin.comment.edit');
+Route::put('/admin/eventboard/{event_id}/comments/{id}/update', 'AdminController@adminCommentUpdate') -> middleware('is_admin') -> name('admin.comment.update');
 Route::delete('/admin/eventboard/{event_id}/commentdelete/{id}', 'AdminController@deleteComment') -> middleware('is_admin') -> name('admin.comment.destroy');
 
 Route::get('/admin/userboard', 'AdminController@adminUsers')->middleware('is_admin')->name('admin.users.show');

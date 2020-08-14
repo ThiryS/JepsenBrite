@@ -5,16 +5,24 @@ import MultiSelect from "react-multi-select-component";
 
 const Example = props => {
     const categories = JSON.parse(props.categories);
-    const [selectedCategory, setSelectedCategory] = useState(categories[0].id);
+    const passedcategory = props.selectedcategory === null? categories[0].id : props.selectedcategory;
+    const passedsubcategories = props.selectedsubcategories === null? [] : JSON.parse(props.selectedsubcategories).map(item => ({
+        value: item.id,
+        label: item.name
+    }));
+    const [selectedCategory, setSelectedCategory] = useState(passedcategory);
+    const [selected, setSelected] = useState(passedsubcategories);
+    console.log(selected);
     const options = categories
         .find(item => item.id === Number(selectedCategory))
         .subcategories.map(item => ({
             value: item.id,
             label: item.name
         }));
-
-    const [selected, setSelected] = useState([]);
+    
+    
     const handleChange = e => {
+        setSelected([]);
         setSelectedCategory(e.target.value);
     };
     return (
@@ -54,7 +62,7 @@ const Example = props => {
         </div>
     );
 };
-
+Example.defaultProps = {selectedcategory:null, selectedsubcategories:null };
 export default Example;
 
 if (document.getElementById("multiselect")) {

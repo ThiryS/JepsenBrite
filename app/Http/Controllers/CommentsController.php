@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Event;
 use App\Comment;
+use App\User;
 
 
 class CommentsController extends Controller
@@ -62,30 +63,46 @@ class CommentsController extends Controller
        return $comment;
     }
     
-    public function CommentEdit($event_id, $id)
+    public function commentEdit($event_id, $id)
     {
-        // $this->authorize('update', $user->profile);
         $event= Event::find($event_id);
         $comment = Comment::find($id);
-        return view('admin/adminCommentEdit', ['event' => $event, 'comment' => $comment]);
+
+        if ($comment -> user_id === auth()-> user()-> id) 
+        {
+            return view('comments/commentEdit', ['event' => $event, 'comment' => $comment]);
+        }
+        else {
+            return \Redirect::route('events.show', $event_id)->with('warning', 'Ce n\'est pas votre commentaire!');
+        }
     }
 
-    public function adminCommentUpdate(REQUEST $request, $event_id, $id)
+    public function commentUpdate(REQUEST $request, $event_id, $id)
     {
         $data = $this->validator($request->all())->validate();
         $comment = Comment::find($id);
-        $comment -> comment = $request -> get('comment');
-        $comment()->update(['comment' => $data['comment']]);
-
-        return \Redirect::route('admin.comments.show', $event_id)->with('success', 'Commentaire modifié!');
+        if ($comment -> user_id === auth()-> user()-> id) 
+        {
+            $comment -> comment = $request -> get('comment');
+            $comment->update(['comment' => $data['comment']]);
+            
+            return \Redirect::route('events.show', $event_id)->with('success', 'Commentaire modifié!');
+        }
+        else {
+            return \Redirect::route('events.show', $event_id)->with('warning', 'Ce n\'est pas votre commentaire!');
+        }
     }
 
     public function deleteComment($event_id, $id)
     {
         $comment = Comment::find($id); 
-
-        $comment->delete();
-
-        return \Redirect::route('admin.comments.show', $event_id)->with('success', 'commentaire supprimé!');
+        if ($comment -> user_id === auth()-> user()-> id){
+            $comment->delete();
+            
+            return \Redirect::route('events.show', $event_id)->with('success', 'commentaire supprimé!');
+        }
+        else {
+            return \Redirect::route('events.show', $event_id)->with('warning', 'Ce n\'est pas votre commentaire!');
+        }
     }
 }

@@ -14,7 +14,7 @@ class Event extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'description', 'image', 'date', 'lat', 'lng', 'category_id',
+        'name', 'description', 'image', 'date', 'address', 'category_id', 'video',
     ];
     /**
      * Get the user record associated with the event.
