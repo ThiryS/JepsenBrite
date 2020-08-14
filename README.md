@@ -1,11 +1,13 @@
 # JepsenBrite
 
-## People that worked on this project
+
+## Members of the team
 
 * Mikye Rinaldo - [Github page](https://github.com/MikyeRinaldo)
 * Simon Thiry - [Github page](https://github.com/ThiryS)
 * Caroline Verpoortern - [Github page](https://github.com/CarolineVerpoorten)
 * Christophe Pecceu - [Github page](https://github.com/ChrisPecc)
+
 
 
 ## Description
@@ -34,6 +36,7 @@ In this project we had to realise a php Website inspired by [eventbrite](https:/
 * Going deeper in PHP and SQL
 
 
+
 ## Instruction
 
 ### Part One
@@ -49,6 +52,7 @@ The website had to contain :
 
 [Complete instructions](https://github.com/becodeorg/LIE-Jepsen-3.20/tree/master/02-the-hill/04-jepsen-brite)
 
+
 ### Part Two
 
 New functions were asked :
@@ -62,9 +66,11 @@ New functions were asked :
 [Complete instructions](https://github.com/becodeorg/LIE-Jepsen-3.20/tree/master/02-the-hill/05-jepsen-brite-2.0)
 
 
+
 ## Time limit
 
 First part ran from july 20th to july 31st. Second part Ran from augustus 3rd to augustus 14th.
+
 
 
 ## Github repository
