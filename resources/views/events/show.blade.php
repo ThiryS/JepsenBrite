@@ -28,6 +28,7 @@
                 <iframe src="{{ $event->video }}" width="100%" height="300" frameborder="0" allowfullscreen></iframe>
                 @endif
                     @auth
+                    <div class="btn-group">
                     <form action="{{ route('participate.create', $event->id)}}" method="post">
                         @csrf
                         @method('POST')
@@ -38,6 +39,7 @@
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">Ne plus participer</button>
                     </form>
+                    </div>
                     @endauth
                     <p><strong>Date:</strong> {{ date('d-m-Y', strtotime($event->date)) }}</p>
                     <p>
@@ -72,8 +74,7 @@
                         <p>{{$comment->comment}}</p>
                         @if($comment->user == Auth::user())
                         <div class="btn-group">
-                            <a href="{{ route('comment.edit', [$comment-> event_id, $comment->id]) }}"
-                                class="pr-4"><i class="fas fa-edit"></i></a>
+                            <a href="{{ route('comment.edit', [$comment-> event_id, $comment->id]) }}"><button class="btn btn-primary"><i class="fas fa-edit"></i></button></a>
                             <form action="{{ route('comment.destroy', [$comment-> event_id, $comment->id])}}"
                                 method="post">
                                 @csrf
