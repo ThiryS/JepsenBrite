@@ -214,7 +214,7 @@ class EventController extends Controller
         $event = Event::find($id);
         $event->delete();
 
-        return \Redirect::route('welcome')->with('success', 'Event supprimé!');
+        return \Redirect::route('events.index.wel')->with('success', 'Event supprimé!');
     }
 
     
