@@ -1,79 +1,81 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# JepsenBrite
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
 
-## About Laravel
+## Members of the team
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+* Mikye Rinaldo - [Github page](https://github.com/MikyeRinaldo)
+* Simon Thiry - [Github page](https://github.com/ThiryS)
+* Caroline Verpoortern - [Github page](https://github.com/CarolineVerpoorten)
+* Christophe Pecceu - [Github page](https://github.com/ChrisPecc)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+## Description
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+This project is a part of the [Becode](https://becode.org/) Web Developer Trining. It lasted from May to November 2020. 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+In this project we had to realise a php Website inspired by [eventbrite](https://www.eventbrite.com/). We were free to use any framework we wanted, so the team chose to use [Laravel](https://laravel.com/). The exercice was divided in two parts. For the second part one of the team member was switched with one member of another team.
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Learning objectives
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+### Part One
+* Generate templates with PHP
+* Be able to use the superglobals $_GET, $_POST, $_COOKIE and $_SESSION variable.
+* Implement a CRUD
+* Create a DB following the client requests
+* Be able to manage SQL requests
+* Use PDO
+* Deploy on Heroku
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Part Two
 
-## Code of Conduct
+* Dealing with an change in your team -> requires skills : solution oriented, team player, team manager.
+* Re-organised the code and the DB. Remember : "To do and undo, it's always part of the job"
+* Going deeper in PHP and SQL
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Instruction
 
-## License
+### Part One
+The website had to contain :
+* An inscription fucntion for users with. When someone signed up, he would receive a mail at his email address.
+* The possibility for any logged in user to create an event.
+* A profile page for each user that display the informations on the account, where the user can update and delete his account.
+* A homepage that show 21 events max, with the first one highlighted.
+* An Event page that would display one event, where the creator could update and delete the event. 
+* The possibility for any registered user to comment an event.
+* A page where past events would be displayed.
+* An page where all events would be displayed and where you could sort them by category.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[Complete instructions](https://github.com/becodeorg/LIE-Jepsen-3.20/tree/master/02-the-hill/04-jepsen-brite)
+
+
+### Part Two
+
+New functions were asked :
+* The possibility to register to an event. the participant should be shown on the single event page
+* The addition of subcategories to each category of event. An event can have several categories.
+* Add a private dashboard for users, where one can see the list of events he created, the list of events he participated to and the list of events he will participate to. 
+* The creation of an Administrator account that could update and delete anything (user, events, comments).
+* The possibility to use a video instead of a picture for events.
+* The addition of an address and a map for each event.
+
+[Complete instructions](https://github.com/becodeorg/LIE-Jepsen-3.20/tree/master/02-the-hill/05-jepsen-brite-2.0)
+
+
+
+## Time limit
+
+First part ran from july 20th to july 31st. Second part Ran from augustus 3rd to augustus 14th.
+
+
+
+## Github repository
+https://github.com/ldolne/jepsen-brite
+
+
+## deployed example
+http://jepsenbrite20.herokuapp.com/
