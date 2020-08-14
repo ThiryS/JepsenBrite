@@ -77,7 +77,7 @@
                         @if($comment->user == Auth::user())
                         <p>
                             <a href="{{ route('comment.edit', [$comment-> event_id, $comment->id]) }}"
-                                class="pr-4"><i class="fas fa-edit"></i></a>
+                                class="btn btn-primary pr-4"><i class="fas fa-edit"></i></a>
                             <form action="{{ route('comment.destroy', [$comment-> event_id, $comment->id])}}"
                                 method="post">
                                 @csrf
