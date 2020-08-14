@@ -134,9 +134,9 @@
                                         </div>
 
                                     @endif
-                                    <div class="card-deck">
+                                
                                     @if($event != $loop->first)
-                                        <div class="card col-md-4">
+                                        <div class="card col-md-3" style="margin-bottom: 1em; margin-right: 1em">
 
                                         <img class="card-img-top" style="object-fit: cover;" src="{{  $event->image }}" alt="Card image cap">
 
@@ -160,7 +160,6 @@
                                         </div>
                                         </div>
                                 @endif
-                                </div>
                               @endforeach
                             </div>
                           {{ $events->links() }}
