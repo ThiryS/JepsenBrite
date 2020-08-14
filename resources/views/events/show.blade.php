@@ -71,7 +71,7 @@
                         <div class="d-flex justify-content-between align-items-baseline">
                         <p>{{$comment->comment}}</p>
                         @if($comment->user == Auth::user())
-                        <p>
+                        <div class="btn-group">
                             <a href="{{ route('comment.edit', [$comment-> event_id, $comment->id]) }}"
                                 class="pr-4"><i class="fas fa-edit"></i></a>
                             <form action="{{ route('comment.destroy', [$comment-> event_id, $comment->id])}}"
@@ -80,7 +80,7 @@
                                 @method('DELETE')
                                 <button class="btn btn-danger" type="submit"><i class="far fa-trash-alt"></i></button>
                             </form>
-                        </p>
+                        </div>
                         @endif
                         </div>
                         
