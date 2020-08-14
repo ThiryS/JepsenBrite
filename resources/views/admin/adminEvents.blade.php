@@ -40,7 +40,7 @@
                     <td>{{ date('d-m-Y', strtotime($event->date)) }}</td>
                     <td>{{ $event->address }}</td>
                     <td>
-                        <a href="{{ route('admin.event.edit', $event->id) }}" class="pr-4">Modifier</a>
+                        <a href="{{ route('admin.event.edit', $event->id) }}" class="pr-4">Modifier</a><br>
                         <a href="{{ route('admin.comments.show', $event->id) }}">Modifier les commentaires</a>
                         <form action="{{ route('admin.events.destroy', $event->id)}}" method="post">
                         @csrf
