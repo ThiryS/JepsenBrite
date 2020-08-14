@@ -14,6 +14,7 @@ This project is a part of the [Becode](https://becode.org/) Web Developer Trinin
 
 In this project we had to realise a php Website inspired by [eventbrite](https://www.eventbrite.com/). We were free to use any framework we wanted, so the team chose to use [Laravel](https://laravel.com/). The exercice was divided in two parts. For the second part one of the team member was switched with one member of another team.
 
+
 ## Learning objectives
 
 ### Part One
@@ -48,7 +49,7 @@ The website had to contain :
 
 [Complete instructions](https://github.com/becodeorg/LIE-Jepsen-3.20/tree/master/02-the-hill/04-jepsen-brite)
 
-## Part Two
+### Part Two
 
 New functions were asked :
 * The possibility to register to an event. the participant should be shown on the single event page
@@ -60,9 +61,11 @@ New functions were asked :
 
 [Complete instructions](https://github.com/becodeorg/LIE-Jepsen-3.20/tree/master/02-the-hill/05-jepsen-brite-2.0)
 
+
 ## Time limit
 
 First part ran from july 20th to july 31st. Second part Ran from augustus 3rd to augustus 14th.
+
 
 ## Github repository
 https://github.com/ldolne/jepsen-brite
