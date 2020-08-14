@@ -37,7 +37,7 @@
                     <form action="{{ route('participate.destroy', $event->id)}}" method="post">
                         @csrf
                         @method('DELETE')
-                        <button class="btn btn-danger" type="submit">Ne plus participer</button>
+                        <button class="btn btn-secondary" type="submit">Ne plus participer</button>
                     </form>
                     </div>
                     @endauth
@@ -79,7 +79,7 @@
                                 method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-primary" type="submit"><i class="far fa-trash-alt"></i></button>
+                                <button class="btn btn-secondary" type="submit"><i class="far fa-trash-alt"></i></button>
                             </form>
                         </div>
                         @endif

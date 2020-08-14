@@ -124,6 +124,7 @@
                                                 @endforeach
                                                 </li>
                                                 <li class="list-group-item">Date: {{ date('d-m-Y', strtotime($event->date)) }}</li>
+                                                <li class="list-group-item"><i class="fas fa-users"></i> <a href="{{ route('participate.show', $event->id) }}">{{ $event->participates_count }}</a></li>
                                                 <li class="list-group-item">Créateur: <a href="{{ route('profile.show', $event->user->id) }}">{{ $event->user->name }}</a></li>
                                             </ul>
                                             <div class="card-body">
@@ -150,6 +151,7 @@
                                             @endforeach
                                             </li>
                                             <li class="list-group-item">Date: {{ date('d-m-Y', strtotime($event->date)) }}</li>
+                                            <li class="list-group-item"><i class="fas fa-users"></i> <a href="{{ route('participate.show', $event->id) }}">{{ $event->participates_count }}</a></li>
                                             <li class="list-group-item">Créateur: <a href="{{ route('profile.show', $event->user->id) }}">{{ $event->user->name }}</a></li>
                                         </ul>
                                         <div class="card-body">
