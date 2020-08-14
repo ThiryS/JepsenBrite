@@ -134,7 +134,9 @@
                                         </div>
 
                                     @endif
-                                
+                              @endforeach
+                              <div class="card-deck">
+                              @foreach ($events as $event)
                                     @if($event != $loop->first)
                                         <div class="card col-md-4" >
 
@@ -161,6 +163,7 @@
                                         </div>
                                 @endif
                               @endforeach
+                              </div>
                             </div>
                           {{ $events->links() }}
                         </div>
